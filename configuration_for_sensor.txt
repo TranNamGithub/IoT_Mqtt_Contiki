@@ -1,0 +1,10 @@
+sensor CO2+ radar hlk ld2420: + plaform-> cc2538dk-> contiki_config.h
+uart0 : 115200
+uart1 : 9600
+rx1 : pa4
+tx1 : pa5
+
+sensor falling:
+uart1 : 115200
+sensor breathing:
+uart1: 9600

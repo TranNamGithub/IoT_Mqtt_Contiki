@@ -1,0 +1,417 @@
+-------- Start FFDC ------s
+FFDC.CWNAN.20231222.214947.656.dmp
+Product      :- Really Small Message Broker
+Version      :- 1.3.0.2
+Build        :- Mar 16 2018 08:33:43
+Features     :- bridge MQTTS 
+Pointer size :- 4 bytes
+Date/Time    :- Fri Dec 22 21:49:47 2023
+
+Reason       :- SEGV information
+info.si_signo = 11
+info.si_errno = 0
+info.si_code  = 1 (SEGV_MAPERR)
+info.si_addr  = 0x7
+
+
+=========== Start of stack trace ==========
+MQTTSProtocol_emptyRegistrati (1038)
+   at MQTTSProtocol_handleConnects (317)
+   at MQTTSProtocol_timeslice (199)
+   at Protocol_timeslice (131)
+   at main (254)
+=========== End of stack trace ==========
+
+=========== Start of trace dump ==========
+20231222 205645.389 CWNAN9993I Authors: Ian Craggs (icraggs@uk.ibm.com), Nicholas O'Leary
+20231222 205645.390 CWNAN0014I MQTT protocol starting, listening on port 1883
+20231222 205645.390 CWNAN0300I MQTT-S protocol starting, listening on port 1884
+20231222 205658.131 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98FF51234 (aaaa::212:4b00:5a9:8ff5:1884)
+20231222 205658.929 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231222 205707.148 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005A98FF51234" from address aaaa::212:4b00:5a9:8ff5:1884, ending oldest connection
+20231222 205707.148 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98FF51234 (aaaa::212:4b00:5a9:8ff5:1884)
+20231222 205707.954 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005AF4BA7" from address aaaa::212:4b00:5af:4ba7:1884, ending oldest connection
+20231222 205707.954 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231222 205719.375 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005A98FF51234" from address aaaa::212:4b00:5a9:8ff5:1884, ending oldest connection
+20231222 205719.376 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98FF51234 (aaaa::212:4b00:5a9:8ff5:1884)
+20231222 205742.346 CWNAN0033I Connection attempt to listener 1883 received from client paho/9237DFF02C4AD4D48D on address 127.0.0.1:59896
+20231222 205833.268 CWNAN0033I Connection attempt to listener 1883 received from client paho/433A55A0CDECAD8826 on address 127.0.0.1:55474
+20231222 210042.336 CWNAN0038I Disconnection request received from client paho/9237DFF02C4AD4D48D
+20231222 210045.256 CWNAN0038I Disconnection request received from client paho/433A55A0CDECAD8826
+20231222 210153.299 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005AF4BA7" from address aaaa::212:4b00:5af:4ba7:1884, ending oldest connection
+20231222 210153.300 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231222 210154.379 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005A98FF51234" from address aaaa::212:4b00:5a9:8ff5:1884, ending oldest connection
+20231222 214939.919       (6)> SubscriptionEngines_getRetained1:748
+20231222 214939.919       (6)< SubscriptionEngines_getRetained1:768
+20231222 214939.919      (5)< SubscriptionEngines_getRetained:788
+20231222 214939.919     (4)< MQTTProtocol_sys_publish:228
+20231222 214939.919     (4)> MQTTProtocol_sys_publish:209
+20231222 214939.919      (5)> SubscriptionEngines_getRetained:783
+20231222 214939.919       (6)> SubscriptionEngines_getRetained1:748
+20231222 214939.919       (6)< SubscriptionEngines_getRetained1:768
+20231222 214939.919      (5)< SubscriptionEngines_getRetained:788
+20231222 214939.919     (4)< MQTTProtocol_sys_publish:228
+20231222 214939.919     (4)> MQTTProtocol_sys_publish:209
+20231222 214939.919      (5)> SubscriptionEngines_getRetained:783
+20231222 214939.919       (6)> SubscriptionEngines_getRetained1:748
+20231222 214939.919       (6)< SubscriptionEngines_getRetained1:768
+20231222 214939.919      (5)< SubscriptionEngines_getRetained:788
+20231222 214939.919     (4)< MQTTProtocol_sys_publish:228
+20231222 214939.919    (3)< MQTTProtocol_update:342
+20231222 214939.919   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214939.919   (2)> MQTTSProtocol_housekeeping:167
+20231222 214939.919   (2)< MQTTSProtocol_housekeeping:187
+20231222 214939.919  (1)< Protocol_timeslice:197
+20231222 214939.919  (1)> Bridge_timeslice:209
+20231222 214939.919  (1)< Bridge_timeslice:237
+20231222 214939.919  (1)> Protocol_timeslice:131
+20231222 214939.919   (2)> Socket_getReadySocket:966
+20231222 214939.919    (3)> Socket_continueWrites:1699
+20231222 214939.919    (3)< Socket_continueWrites:1719 (0)
+20231222 214939.919   (2)< Socket_getReadySocket:1159 (0)
+20231222 214939.919   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214939.919   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214939.919   (2)> add_prefix:830
+20231222 214939.919   (2)< add_prefix:837
+20231222 214939.919   (2)> Persistence_read_command:1273
+20231222 214939.919    (3)> free_prefix:849
+20231222 214939.919    (3)< free_prefix:852
+20231222 214939.919   (2)< Persistence_read_command:1285
+20231222 214939.919   (2)> MQTTProtocol_housekeeping:386
+20231222 214939.919   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214939.919   (2)> MQTTSProtocol_housekeeping:167
+20231222 214939.919   (2)< MQTTSProtocol_housekeeping:187
+20231222 214939.919  (1)< Protocol_timeslice:197
+20231222 214939.919  (1)> Bridge_timeslice:209
+20231222 214939.919  (1)< Bridge_timeslice:237
+20231222 214940.920  (1)> Protocol_timeslice:131
+20231222 214940.920   (2)> Socket_getReadySocket:966
+20231222 214940.920    (3)> Socket_continueWrites:1699
+20231222 214940.920    (3)< Socket_continueWrites:1719 (0)
+20231222 214940.920   (2)< Socket_getReadySocket:1159 (0)
+20231222 214940.920   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214940.920   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214940.920   (2)> add_prefix:830
+20231222 214940.920   (2)< add_prefix:837
+20231222 214940.920   (2)> Persistence_read_command:1273
+20231222 214940.920    (3)> free_prefix:849
+20231222 214940.920    (3)< free_prefix:852
+20231222 214940.920   (2)< Persistence_read_command:1285
+20231222 214940.920   (2)> MQTTProtocol_housekeeping:386
+20231222 214940.920   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214940.920   (2)> MQTTSProtocol_housekeeping:167
+20231222 214940.920   (2)< MQTTSProtocol_housekeeping:187
+20231222 214940.920  (1)< Protocol_timeslice:197
+20231222 214940.920  (1)> Bridge_timeslice:209
+20231222 214940.920  (1)< Bridge_timeslice:237
+20231222 214941.921  (1)> Protocol_timeslice:131
+20231222 214941.921   (2)> Socket_getReadySocket:966
+20231222 214941.921    (3)> Socket_continueWrites:1699
+20231222 214941.921    (3)< Socket_continueWrites:1719 (0)
+20231222 214941.921   (2)< Socket_getReadySocket:1159 (0)
+20231222 214941.921   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214941.921   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214941.921   (2)> add_prefix:830
+20231222 214941.921   (2)< add_prefix:837
+20231222 214941.921   (2)> Persistence_read_command:1273
+20231222 214941.921    (3)> free_prefix:849
+20231222 214941.921    (3)< free_prefix:852
+20231222 214941.921   (2)< Persistence_read_command:1285
+20231222 214941.921   (2)> MQTTProtocol_housekeeping:386
+20231222 214941.921   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214941.921   (2)> MQTTSProtocol_housekeeping:167
+20231222 214941.921   (2)< MQTTSProtocol_housekeeping:187
+20231222 214941.921  (1)< Protocol_timeslice:197
+20231222 214941.921  (1)> Bridge_timeslice:209
+20231222 214941.921  (1)< Bridge_timeslice:237
+20231222 214942.923  (1)> Protocol_timeslice:131
+20231222 214942.923   (2)> Socket_getReadySocket:966
+20231222 214942.923    (3)> Socket_continueWrites:1699
+20231222 214942.923    (3)< Socket_continueWrites:1719 (0)
+20231222 214942.923   (2)< Socket_getReadySocket:1159 (0)
+20231222 214942.923   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214942.923   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214942.923   (2)> add_prefix:830
+20231222 214942.923   (2)< add_prefix:837
+20231222 214942.923   (2)> Persistence_read_command:1273
+20231222 214942.923    (3)> free_prefix:849
+20231222 214942.923    (3)< free_prefix:852
+20231222 214942.923   (2)< Persistence_read_command:1285
+20231222 214942.923   (2)> MQTTProtocol_housekeeping:386
+20231222 214942.923   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214942.923   (2)> MQTTSProtocol_housekeeping:167
+20231222 214942.923   (2)< MQTTSProtocol_housekeeping:187
+20231222 214942.923  (1)< Protocol_timeslice:197
+20231222 214942.923  (1)> Bridge_timeslice:209
+20231222 214942.923  (1)< Bridge_timeslice:237
+20231222 214943.924  (1)> Protocol_timeslice:131
+20231222 214943.924   (2)> Socket_getReadySocket:966
+20231222 214943.924    (3)> Socket_continueWrites:1699
+20231222 214943.924    (3)< Socket_continueWrites:1719 (0)
+20231222 214943.924   (2)< Socket_getReadySocket:1159 (0)
+20231222 214943.924   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214943.924   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214943.924   (2)> add_prefix:830
+20231222 214943.924   (2)< add_prefix:837
+20231222 214943.924   (2)> Persistence_read_command:1273
+20231222 214943.924    (3)> free_prefix:849
+20231222 214943.924    (3)< free_prefix:852
+20231222 214943.924   (2)< Persistence_read_command:1285
+20231222 214943.924   (2)> MQTTProtocol_housekeeping:386
+20231222 214943.924   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214943.924   (2)> MQTTSProtocol_housekeeping:167
+20231222 214943.924   (2)< MQTTSProtocol_housekeeping:187
+20231222 214943.924  (1)< Protocol_timeslice:197
+20231222 214943.924  (1)> Bridge_timeslice:209
+20231222 214943.924  (1)< Bridge_timeslice:237
+20231222 214944.925  (1)> Protocol_timeslice:131
+20231222 214944.925   (2)> Socket_getReadySocket:966
+20231222 214944.925    (3)> Socket_continueWrites:1699
+20231222 214944.925    (3)< Socket_continueWrites:1719 (0)
+20231222 214944.925   (2)< Socket_getReadySocket:1159 (0)
+20231222 214944.925   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214944.925   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214944.925   (2)> add_prefix:830
+20231222 214944.925   (2)< add_prefix:837
+20231222 214944.925   (2)> Persistence_read_command:1273
+20231222 214944.925    (3)> free_prefix:849
+20231222 214944.925    (3)< free_prefix:852
+20231222 214944.925   (2)< Persistence_read_command:1285
+20231222 214944.925   (2)> MQTTProtocol_housekeeping:386
+20231222 214944.925    (3)> MQTTProtocol_keepalive:560
+20231222 214944.925    (3)< MQTTProtocol_keepalive:603
+20231222 214944.925    (3)> MQTTProtocol_retry:858
+20231222 214944.925     (4)> MQTTProtocol_retries:720
+20231222 214944.925     (4)< MQTTProtocol_retries:843
+20231222 214944.925     (4)> MQTTProtocol_processQueued:621
+20231222 214945.927     (4)< MQTTProtocol_processQueued:706 (0)
+20231222 214945.927     (4)> MQTTProtocol_retries:720
+20231222 214945.927     (4)< MQTTProtocol_retries:843
+20231222 214945.927     (4)> MQTTProtocol_processQueued:621
+20231222 214945.927     (4)< MQTTProtocol_processQueued:706 (0)
+20231222 214945.927    (3)< MQTTProtocol_retry:905 (0)
+20231222 214945.927    (3)> MQTTProtocol_update:246
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927      (5)> MQTTProtocol_handlePublishes:318
+20231222 214945.927       (6)> Protocol_handlePublishes:444
+20231222 214945.927        (7)> Socket_getParentListener:1818
+20231222 214945.927        (7)< Socket_getParentListener:1829
+20231222 214945.927        (7)> Protocol_processPublication:214
+20231222 214945.927         (8)> SubscriptionEngines_setRetained:724
+20231222 214945.927          (9)> SubscriptionEngines_setRetained1:670
+20231222 214945.927          (9)< SubscriptionEngines_setRetained1:710
+20231222 214945.927         (8)< SubscriptionEngines_setRetained:732
+20231222 214945.927         (8)> SubscriptionEngines_getSubscribers:644
+20231222 214945.927          (9)> SubscriptionEngines_getSubscribers1:550
+20231222 214945.927          (9)< SubscriptionEngines_getSubscribers1:582
+20231222 214945.927         (8)< SubscriptionEngines_getSubscribers:652
+20231222 214945.927        (7)< Protocol_processPublication:322
+20231222 214945.927       (6)< Protocol_handlePublishes:526 (0)
+20231222 214945.927      (5)< MQTTProtocol_handlePublishes:329 (0)
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927     (4)> MQTTProtocol_sys_publish:209
+20231222 214945.927      (5)> SubscriptionEngines_getRetained:783
+20231222 214945.927       (6)> SubscriptionEngines_getRetained1:748
+20231222 214945.927       (6)< SubscriptionEngines_getRetained1:768
+20231222 214945.927      (5)< SubscriptionEngines_getRetained:788
+20231222 214945.927     (4)< MQTTProtocol_sys_publish:228
+20231222 214945.927    (3)< MQTTProtocol_update:342
+20231222 214945.927   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214945.927   (2)> MQTTSProtocol_housekeeping:167
+20231222 214945.927   (2)< MQTTSProtocol_housekeeping:187
+20231222 214945.927  (1)< Protocol_timeslice:197
+20231222 214945.927  (1)> Bridge_timeslice:209
+20231222 214945.927  (1)< Bridge_timeslice:237
+20231222 214945.927  (1)> Protocol_timeslice:131
+20231222 214945.927   (2)> Socket_getReadySocket:966
+20231222 214945.927    (3)> Socket_continueWrites:1699
+20231222 214945.927    (3)< Socket_continueWrites:1719 (0)
+20231222 214945.927   (2)< Socket_getReadySocket:1159 (0)
+20231222 214945.927   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214946.928   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214946.928   (2)> add_prefix:830
+20231222 214946.928   (2)< add_prefix:837
+20231222 214946.928   (2)> Persistence_read_command:1273
+20231222 214946.928    (3)> free_prefix:849
+20231222 214946.928    (3)< free_prefix:852
+20231222 214946.928   (2)< Persistence_read_command:1285
+20231222 214946.928   (2)> MQTTProtocol_housekeeping:386
+20231222 214946.928   (2)< MQTTProtocol_housekeeping:398 (0)
+20231222 214946.928   (2)> MQTTSProtocol_housekeeping:167
+20231222 214946.928   (2)< MQTTSProtocol_housekeeping:187
+20231222 214946.928  (1)< Protocol_timeslice:197
+20231222 214946.928  (1)> Bridge_timeslice:209
+20231222 214946.928  (1)< Bridge_timeslice:237
+20231222 214946.928  (1)> Protocol_timeslice:131
+20231222 214946.928   (2)> Socket_getReadySocket:966
+20231222 214946.928    (3)> Socket_continueWrites:1699
+20231222 214946.928    (3)< Socket_continueWrites:1719 (0)
+20231222 214946.928   (2)< Socket_getReadySocket:1159 (4)
+20231222 214946.928   (2)> MQTTProtocol_checkPendingWrites:353
+20231222 214947.654   (2)< MQTTProtocol_checkPendingWrites:375
+20231222 214947.654   (2)> Socket_getParentListener:1818
+20231222 214947.654   (2)< Socket_getParentListener:1829
+20231222 214947.654   (2)> MQTTSProtocol_timeslice:199
+20231222 214947.654    (3)> MQTTSPacket_Factory:152
+20231222 214947.654     (4)> MQTTSPacket_connect:325
+20231222 214947.654     (4)< MQTTSPacket_connect:333
+20231222 214947.654    (3)< MQTTSPacket_Factory:214 (-1)
+20231222 214947.654    (3)> Protocol_getclientbyaddr:388
+20231222 214947.654    (3)< Protocol_getclientbyaddr:391
+20231222 214947.654    (3)> MQTTSProtocol_handleConnects:317
+20231222 214947.654 4 aaaa::212:4b00:5a9:8ff5:1884 00124B0005A98FF51234 <- MQTT-S CONNECT cleansession: 1
+20231222 214947.654     (4)> Socket_getParentListener:1818
+20231222 214947.654     (4)< Socket_getParentListener:1829
+20231222 214947.654     (4)> MQTTProtocol_handlePublishes:318
+20231222 214947.654      (5)> Protocol_handlePublishes:444
+20231222 214947.654       (6)> Socket_getParentListener:1818
+20231222 214947.654       (6)< Socket_getParentListener:1829
+20231222 214947.654       (6)> Protocol_processPublication:214
+20231222 214947.654        (7)> SubscriptionEngines_getSubscribers:644
+20231222 214947.654         (8)> SubscriptionEngines_getSubscribers1:550
+20231222 214947.654         (8)< SubscriptionEngines_getSubscribers1:582
+20231222 214947.654        (7)< SubscriptionEngines_getSubscribers:652
+20231222 214947.654       (6)< Protocol_processPublication:322
+20231222 214947.654      (5)< Protocol_handlePublishes:526 (0)
+20231222 214947.654     (4)< MQTTProtocol_handlePublishes:329 (0)
+20231222 214947.654     (4)> MQTTProtocol_removeAllSubscriptions:609
+20231222 214947.654      (5)> SubscriptionEngines_unsubscribe:486
+20231222 214947.654       (6)> SubscriptionEngines_unsubscribe1:427
+20231222 214947.654       (6)< SubscriptionEngines_unsubscribe1:446
+20231222 214947.654       (6)>

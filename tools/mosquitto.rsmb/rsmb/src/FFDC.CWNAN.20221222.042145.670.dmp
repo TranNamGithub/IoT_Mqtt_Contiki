@@ -1,0 +1,1016 @@
+-------- Start FFDC ------s
+FFDC.CWNAN.20221222.042145.670.dmp
+Product      :- Really Small Message Broker
+Version      :- 1.3.0.2
+Build        :- Mar 16 2018 08:33:43
+Features     :- bridge MQTTS 
+Pointer size :- 4 bytes
+Date/Time    :- Thu Dec 22 04:21:45 2022
+
+Reason       :- 20221222 042145.670 CWNAN0013S Failed to remove heap item at file SubsEngine.c line 437
+
+=========== Start of stack trace ==========
+SubscriptionEngines_unsubscri (427)
+   at SubscriptionEngines_unsubscri (455)
+   at SubscriptionEngines_unsubscri (486)
+   at MQTTProtocol_removeAllSubscri (609)
+   at MQTTProtocol_freeClient (918)
+   at MQTTProtocol_closeSession (1069)
+   at MQTTProtocol_shutdownclients (159)
+   at MQTTSProtocol_terminate (150)
+   at Protocol_terminate (70)
+   at Broker_shutdown (367)
+   at main (254)
+=========== End of stack trace ==========
+
+=========== Start of trace dump ==========
+20221222 040603.389 CWNAN9999I Really Small Message Broker
+20221222 040603.389 CWNAN9998I Part of Project Mosquitto in Eclipse
+(http://projects.eclipse.org/projects/technology.mosquitto)
+20221222 040603.389 CWNAN0049I Configuration file name is config.mqtt
+20221222 040603.390 CWNAN0053I Version 1.3.0.2, Mar 16 2018 08:33:43
+20221222 040603.390 CWNAN0054I Features included: bridge MQTTS 
+20221222 040603.390 CWNAN9993I Authors: Ian Craggs (icraggs@uk.ibm.com), Nicholas O'Leary
+20221222 040603.391 CWNAN0014I MQTT protocol starting, listening on port 1883
+20221222 040603.391 CWNAN0300I MQTT-S protocol starting, listening on port 1884
+20221222 040603.410 CWNAN0000I Client connected to udp port 1884 from C10C000000000003 (aaaa::c30c:0:0:3:1884)
+20221222 040603.464 CWNAN0000I Client connected to udp port 1884 from C10C000000000002 (aaaa::c30c:0:0:2:1884)
+20221222 040924.416 CWNAN0033I Connection attempt to listener 1883 received from client mosq/XbbkkQ8smOYjqGGtzv on address 127.0.0.1:58987
+20221222 040930.953 CWNAN0018W Socket error for client identifier mosq/XbbkkQ8smOYjqGGtzv, socket 5, peer address 127.0.0.1:58987; ending connection
+20221222 041819.937 CWNAN0034I Duplicate connection attempt received for client identifier "C10C000000000002" from address aaaa::c30c:0:0:2:1884, ending oldest connection
+20221222 041819.937 CWNAN0013S Internal error; FFDC written to file FFDC.CWNAN.20221222.041819.937.dmp
+20221222 041819.938 CWNAN0000I Client connected to udp port 1884 from C10C000000000002 (aaaa::c30c:0:0:2:1884)
+20221222 041821.660 CWNAN0034I Duplicate connection attempt received for client identifier "C10C000000000003" from address aaaa::c30c:0:0:3:1884, ending oldest connection
+20221222 041821.660 CWNAN0000I Client connected to udp port 1884 from C10C000000000003 (aaaa::c30c:0:0:3:1884)
+20221222 042145.564        (7)> MQTTProtocol_startPublish:148
+20221222 042145.564         (8)> MQTTProtocol_startPublishCommon:109
+20221222 042145.564          (9)> MQTTSProtocol_startPublishCommon:1103
+20221222 042145.564           (10)> MQTTSProtocol_getRegisteredTopicId:1022
+20221222 042145.564           (10)< MQTTSProtocol_getRegisteredTopicId:1029 (1)
+20221222 042145.564           (10)> MQTTSPacket_send_publish:945
+20221222 042145.564            (11)> MQTTSPacket_send:741
+20221222 042145.564             (12)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.564             (12)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.564            (11)< MQTTSPacket_send:777 (0)
+20221222 042145.564 4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)
+20221222 042145.564           (10)< MQTTSPacket_send_publish:965 (0)
+20221222 042145.564           (10)> MQTTSPacket_free_packet:572
+20221222 042145.564            (11)> MQTTSPacket_free_publish:639
+20221222 042145.564            (11)< MQTTSPacket_free_publish:644
+20221222 042145.564           (10)< MQTTSPacket_free_packet:576
+20221222 042145.564          (9)< MQTTSProtocol_startPublishCommon:1158 (0)
+20221222 042145.564         (8)< MQTTProtocol_startPublishCommon:129 (0)
+20221222 042145.564        (7)< MQTTProtocol_startPublish:160 (0)
+20221222 042145.564       (6)< Protocol_startOrQueuePublish:377 (0)
+20221222 042145.564      (5)< Protocol_processPublication:322
+20221222 042145.564      (5)> MQTTPacket_freePublish:760
+20221222 042145.564      (5)< MQTTPacket_freePublish:764
+20221222 042145.564     (4)< Protocol_handlePublishes:526 (0)
+20221222 042145.564     (4)> MQTTSPacket_free_packet:572
+20221222 042145.564      (5)> MQTTSPacket_free_publish:639
+20221222 042145.564      (5)< MQTTSPacket_free_publish:644
+20221222 042145.564     (4)< MQTTSPacket_free_packet:576
+20221222 042145.564    (3)< MQTTSProtocol_handlePublishes:660 (0)
+20221222 042145.564   (2)< MQTTSProtocol_timeslice:256
+20221222 042145.564   (2)> add_prefix:830
+20221222 042145.564   (2)< add_prefix:837
+20221222 042145.564   (2)> Persistence_read_command:1273
+20221222 042145.564    (3)> free_prefix:849
+20221222 042145.564    (3)< free_prefix:852
+20221222 042145.564   (2)< Persistence_read_command:1285
+20221222 042145.564   (2)> MQTTProtocol_housekeeping:386
+20221222 042145.564   (2)< MQTTProtocol_housekeeping:398 (0)
+20221222 042145.564   (2)> MQTTSProtocol_housekeeping:167
+20221222 042145.564   (2)< MQTTSProtocol_housekeeping:187
+20221222 042145.564  (1)< Protocol_timeslice:197
+20221222 042145.564  (1)> Bridge_timeslice:209
+20221222 042145.564  (1)< Bridge_timeslice:237
+20221222 042145.564  (1)> Protocol_timeslice:131
+20221222 042145.564   (2)> Socket_getReadySocket:966
+20221222 042145.564    (3)> Socket_continueWrites:1699
+20221222 042145.564    (3)< Socket_continueWrites:1719 (0)
+20221222 042145.564   (2)< Socket_getReadySocket:1159 (4)
+20221222 042145.564   (2)> MQTTProtocol_checkPendingWrites:353
+20221222 042145.564   (2)< MQTTProtocol_checkPendingWrites:375
+20221222 042145.564   (2)> Socket_getParentListener:1818
+20221222 042145.564   (2)< Socket_getParentListener:1829
+20221222 042145.564   (2)> MQTTSProtocol_timeslice:199
+20221222 042145.564    (3)> MQTTSPacket_Factory:152
+20221222 042145.564     (4)> MQTTSPacket_pingreq:497
+20221222 042145.564     (4)< MQTTSPacket_pingreq:507
+20221222 042145.564    (3)< MQTTSPacket_Factory:214 (-1)
+20221222 042145.564    (3)> Protocol_getclientbyaddr:388
+20221222 042145.564    (3)< Protocol_getclientbyaddr:391
+20221222 042145.564    (3)> MQTTSProtocol_handlePingreqs:916
+20221222 042145.564     (4)> MQTTSPacket_send_ack:787
+20221222 042145.564      (5)> MQTTSPacketSerialize_ack:54
+20221222 042145.564      (5)< MQTTSPacketSerialize_ack:65
+20221222 042145.564      (5)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.564      (5)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.564     (4)< MQTTSPacket_send_ack:791 (0)
+20221222 042145.564 4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PINGRESP (0)
+20221222 042145.564     (4)> MQTTSPacket_free_packet:572
+20221222 042145.564      (5)> MQTTSPacket_free_pingreq:664
+20221222 042145.564      (5)< MQTTSPacket_free_pingreq:667
+20221222 042145.564     (4)< MQTTSPacket_free_packet:576
+20221222 042145.564    (3)< MQTTSProtocol_handlePingreqs:920 (0)
+20221222 042145.564   (2)< MQTTSProtocol_timeslice:256
+20221222 042145.564   (2)> add_prefix:830
+20221222 042145.564   (2)< add_prefix:837
+20221222 042145.564   (2)> Persistence_read_command:1273
+20221222 042145.564    (3)> free_prefix:849
+20221222 042145.564    (3)< free_prefix:852
+20221222 042145.564   (2)< Persistence_read_command:1285
+20221222 042145.564   (2)> MQTTProtocol_housekeeping:386
+20221222 042145.564   (2)< MQTTProtocol_housekeeping:398 (0)
+20221222 042145.564   (2)> MQTTSProtocol_housekeeping:167
+20221222 042145.564   (2)< MQTTSProtocol_housekeeping:187
+20221222 042145.564  (1)< Protocol_timeslice:197
+20221222 042145.564  (1)> Bridge_timeslice:209
+20221222 042145.564  (1)< Bridge_timeslice:237
+20221222 042145.564  (1)> Protocol_timeslice:131
+20221222 042145.564   (2)> Socket_getReadySocket:966
+20221222 042145.564    (3)> Socket_continueWrites:1699
+20221222 042145.564    (3)< Socket_continueWrites:1719 (0)
+20221222 042145.564   (2)< Socket_getReadySocket:1159 (4)
+20221222 042145.564   (2)> MQTTProtocol_checkPendingWrites:353
+20221222 042145.564   (2)< MQTTProtocol_checkPendingWrites:375
+20221222 042145.564   (2)> Socket_getParentListener:1818
+20221222 042145.564   (2)< Socket_getParentListener:1829
+20221222 042145.564   (2)> MQTTSProtocol_timeslice:199
+20221222 042145.564    (3)> MQTTSPacket_Factory:152
+20221222 042145.564     (4)> MQTTSPacket_pingreq:497
+20221222 042145.564     (4)< MQTTSPacket_pingreq:507
+20221222 042145.564    (3)< MQTTSPacket_Factory:214 (-1)
+20221222 042145.564    (3)> Protocol_getclientbyaddr:388
+20221222 042145.564    (3)< Protocol_getclientbyaddr:391
+20221222 042145.564    (3)> MQTTSProtocol_handlePingreqs:916
+20221222 042145.564     (4)> MQTTSPacket_send_ack:787
+20221222 042145.564      (5)> MQTTSPacketSerialize_ack:54
+20221222 042145.564      (5)< MQTTSPacketSerialize_ack:65
+20221222 042145.564      (5)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.564      (5)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.564     (4)< MQTTSPacket_send_ack:791 (0)
+20221222 042145.564 4 aaaa::c30c:0:0:3:1884 C10C000000000003 -> MQTT-S PINGRESP (0)
+20221222 042145.564     (4)> MQTTSPacket_free_packet:572
+20221222 042145.564      (5)> MQTTSPacket_free_pingreq:664
+20221222 042145.564      (5)< MQTTSPacket_free_pingreq:667
+20221222 042145.564     (4)< MQTTSPacket_free_packet:576
+20221222 042145.564    (3)< MQTTSProtocol_handlePingreqs:920 (0)
+20221222 042145.564   (2)< MQTTSProtocol_timeslice:256
+20221222 042145.564   (2)> add_prefix:830
+20221222 042145.564   (2)< add_prefix:837
+20221222 042145.564   (2)> Persistence_read_command:1273
+20221222 042145.564    (3)> free_prefix:849
+20221222 042145.564    (3)< free_prefix:852
+20221222 042145.564   (2)< Persistence_read_command:1285
+20221222 042145.564   (2)> MQTTProtocol_housekeeping:386
+20221222 042145.564   (2)< MQTTProtocol_housekeeping:398 (0)
+20221222 042145.564   (2)> MQTTSProtocol_housekeeping:167
+20221222 042145.564   (2)< MQTTSProtocol_housekeeping:187
+20221222 042145.564  (1)< Protocol_timeslice:197
+20221222 042145.564  (1)> Bridge_timeslice:209
+20221222 042145.564  (1)< Bridge_timeslice:237
+20221222 042145.564  (1)> Protocol_timeslice:131
+20221222 042145.564   (2)> Socket_getReadySocket:966
+20221222 042145.564    (3)> Socket_continueWrites:1699
+20221222 042145.564    (3)< Socket_continueWrites:1719 (0)
+20221222 042145.564   (2)< Socket_getReadySocket:1159 (4)
+20221222 042145.564   (2)> MQTTProtocol_checkPendingWrites:353
+20221222 042145.564   (2)< MQTTProtocol_checkPendingWrites:375
+20221222 042145.564   (2)> Socket_getParentListener:1818
+20221222 042145.564   (2)< Socket_getParentListener:1829
+20221222 042145.564   (2)> MQTTSProtocol_timeslice:199
+20221222 042145.564    (3)> MQTTSPacket_Factory:152
+20221222 042145.564     (4)> MQTTSPacket_publish:407
+20221222 042145.564     (4)< MQTTSPacket_publish:445
+20221222 042145.564    (3)< MQTTSPacket_Factory:214 (-1)
+20221222 042145.564    (3)> Protocol_getclientbyaddr:388
+20221222 042145.564    (3)< Protocol_getclientbyaddr:391
+20221222 042145.564    (3)> MQTTSProtocol_handlePublishes:613
+20221222 042145.564 4 aaaa::c30c:0:0:3:1884 C10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1
+20221222 042145.564     (4)> MQTTSProtocol_getRegisteredTopicName:1005
+20221222 042145.564     (4)< MQTTSProtocol_getRegisteredTopicName:1012
+20221222 042145.564     (4)> Protocol_handlePublishes:444
+20221222 042145.564      (5)> Socket_getParentListener:1818
+20221222 042145.564      (5)< Socket_getParentListener:1829
+20221222 042145.564      (5)> Protocol_processPublication:214
+20221222 042145.564       (6)> SubscriptionEngines_setRetained:724
+20221222 042145.564        (7)> SubscriptionEngines_setRetained1:670
+20221222 042145.564        (7)< SubscriptionEngines_setRetained1:710
+20221222 042145.564       (6)< SubscriptionEngines_setRetained:732
+20221222 042145.564       (6)> SubscriptionEngines_getSubscribers:644
+20221222 042145.564        (7)> SubscriptionEngines_getSubscribers1:550
+20221222 042145.564        (7)< SubscriptionEngines_getSubscribers1:582
+20221222 042145.564        (7)> SubscriptionEngines_getSubscribers2:591
+20221222 042145.564 Adding client C10C000000000002 to subscribers list
+20221222 042145.564        (7)< SubscriptionEngines_getSubscribers2:628
+20221222 042145.564       (6)< SubscriptionEngines_getSubscribers:652
+20221222 042145.564       (6)> Protocol_startOrQueuePublish:339
+20221222 042145.564        (7)> MQTTSProtocol_getRegisteredTopicId:1022
+20221222 042145.564        (7)< MQTTSProtocol_getRegisteredTopicId:1029 (1)
+20221222 042145.564        (7)> MQTTProtocol_startPublish:148
+20221222 042145.564         (8)> MQTTProtocol_startPublishCommon:109
+20221222 042145.564          (9)> MQTTSProtocol_startPublishCommon:1103
+20221222 042145.564           (10)> MQTTSProtocol_getRegisteredTopicId:1022
+20221222 042145.564           (10)< MQTTSProtocol_getRegisteredTopicId:1029 (1)
+20221222 042145.564           (10)> MQTTSPacket_send_publish:945
+20221222 042145.564            (11)> MQTTSPacket_send:741
+20221222 042145.564             (12)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.564             (12)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.564            (11)< MQTTSPacket_send:777 (0)
+20221222 042145.564 4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)
+20221222 042145.564           (10)< MQTTSPacket_send_publish:965 (0)
+20221222 042145.564           (10)> MQTTSPacket_free_packet:572
+20221222 042145.564            (11)> MQTTSPacket_free_publish:639
+20221222 042145.564            (11)< MQTTSPacket_free_publish:644
+20221222 042145.564           (10)< MQTTSPacket_free_packet:576
+20221222 042145.564          (9)< MQTTSProtocol_startPublishCommon:1158 (0)
+20221222 042145.564         (8)< MQTTProtocol_startPublishCommon:129 (0)
+20221222 042145.564        (7)< MQTTProtocol_startPublish:160 (0)
+20221222 042145.564       (6)< Protocol_startOrQueuePublish:377 (0)
+20221222 042145.564      (5)< Protocol_processPublication:322
+20221222 042145.564      (5)> MQTTPacket_freePublish:760
+20221222 042145.564      (5)< MQTTPacket_freePublish:764
+20221222 042145.564     (4)< Protocol_handlePublishes:526 (0)
+20221222 042145.564     (4)> MQTTSPacket_free_packet:572
+20221222 042145.564      (5)> MQTTSPacket_free_publish:639
+20221222 042145.564      (5)< MQTTSPacket_free_publish:644
+20221222 042145.564     (4)< MQTTSPacket_free_packet:576
+20221222 042145.564    (3)< MQTTSProtocol_handlePublishes:660 (0)
+20221222 042145.564   (2)< MQTTSProtocol_timeslice:256
+20221222 042145.564   (2)> add_prefix:830
+20221222 042145.564   (2)< add_prefix:837
+20221222 042145.564   (2)> Persistence_read_command:1273
+20221222 042145.564    (3)> free_prefix:849
+20221222 042145.564    (3)< free_prefix:852
+20221222 042145.564   (2)< Persistence_read_command:1285
+20221222 042145.564   (2)> MQTTProtocol_housekeeping:386
+20221222 042145.564   (2)< MQTTProtocol_housekeeping:398 (0)
+20221222 042145.564   (2)> MQTTSProtocol_housekeeping:167
+20221222 042145.564   (2)< MQTTSProtocol_housekeeping:187
+20221222 042145.564  (1)< Protocol_timeslice:197
+20221222 042145.564  (1)> Bridge_timeslice:209
+20221222 042145.564  (1)< Bridge_timeslice:237
+20221222 042145.564  (1)> Protocol_timeslice:131
+20221222 042145.564   (2)> Socket_getReadySocket:966
+20221222 042145.564    (3)> Socket_continueWrites:1699
+20221222 042145.564    (3)< Socket_continueWrites:1719 (0)
+20221222 042145.564   (2)< Socket_getReadySocket:1159 (4)
+20221222 042145.564   (2)> MQTTProtocol_checkPendingWrites:353
+20221222 042145.632   (2)< MQTTProtocol_checkPendingWrites:375
+20221222 042145.632   (2)> Socket_getParentListener:1818
+20221222 042145.632   (2)< Socket_getParentListener:1829
+20221222 042145.632   (2)> MQTTSProtocol_timeslice:199
+20221222 042145.632    (3)> MQTTSPacket_Factory:152
+20221222 042145.632     (4)> MQTTSPacket_publish:407
+20221222 042145.632     (4)< MQTTSPacket_publish:445
+20221222 042145.632    (3)< MQTTSPacket_Factory:214 (-1)
+20221222 042145.632    (3)> Protocol_getclientbyaddr:388
+20221222 042145.632    (3)< Protocol_getclientbyaddr:391
+20221222 042145.632    (3)> MQTTSProtocol_handlePublishes:613
+20221222 042145.632 4 aaaa::c30c:0:0:3:1884 C10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1
+20221222 042145.632     (4)> MQTTSProtocol_getRegisteredTopicName:1005
+20221222 042145.632     (4)< MQTTSProtocol_getRegisteredTopicName:1012
+20221222 042145.632     (4)> Protocol_handlePublishes:444
+20221222 042145.632      (5)> Socket_getParentListener:1818
+20221222 042145.632      (5)< Socket_getParentListener:1829
+20221222 042145.632      (5)> Protocol_processPublication:214
+20221222 042145.632       (6)> SubscriptionEngines_setRetained:724
+20221222 042145.632        (7)> SubscriptionEngines_setRetained1:670
+20221222 042145.632        (7)< SubscriptionEngines_setRetained1:710
+20221222 042145.632       (6)< SubscriptionEngines_setRetained:732
+20221222 042145.632       (6)> SubscriptionEngines_getSubscribers:644
+20221222 042145.632        (7)> SubscriptionEngines_getSubscribers1:550
+20221222 042145.632        (7)< SubscriptionEngines_getSubscribers1:582
+20221222 042145.632        (7)> SubscriptionEngines_getSubscribers2:591
+20221222 042145.632 Adding client C10C000000000002 to subscribers list
+20221222 042145.632        (7)< SubscriptionEngines_getSubscribers2:628
+20221222 042145.632       (6)< SubscriptionEngines_getSubscribers:652
+20221222 042145.632       (6)> Protocol_startOrQueuePublish:339
+20221222 042145.632        (7)> MQTTSProtocol_getRegisteredTopicId:1022
+20221222 042145.632        (7)< MQTTSProtocol_getRegisteredTopicId:1029 (1)
+20221222 042145.632        (7)> MQTTProtocol_startPublish:148
+20221222 042145.632         (8)> MQTTProtocol_startPublishCommon:109
+20221222 042145.632          (9)> MQTTSProtocol_startPublishCommon:1103
+20221222 042145.632           (10)> MQTTSProtocol_getRegisteredTopicId:1022
+20221222 042145.632           (10)< MQTTSProtocol_getRegisteredTopicId:1029 (1)
+20221222 042145.632           (10)> MQTTSPacket_send_publish:945
+20221222 042145.632            (11)> MQTTSPacket_send:741
+20221222 042145.632             (12)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.632             (12)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.632            (11)< MQTTSPacket_send:777 (0)
+20221222 042145.632 4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)
+20221222 042145.632           (10)< MQTTSPacket_send_publish:965 (0)
+20221222 042145.632           (10)> MQTTSPacket_free_packet:572
+20221222 042145.632            (11)> MQTTSPacket_free_publish:639
+20221222 042145.632            (11)< MQTTSPacket_free_publish:644
+20221222 042145.632           (10)< MQTTSPacket_free_packet:576
+20221222 042145.632          (9)< MQTTSProtocol_startPublishCommon:1158 (0)
+20221222 042145.632         (8)< MQTTProtocol_startPublishCommon:129 (0)
+20221222 042145.632        (7)< MQTTProtocol_startPublish:160 (0)
+20221222 042145.632       (6)< Protocol_startOrQueuePublish:377 (0)
+20221222 042145.632      (5)< Protocol_processPublication:322
+20221222 042145.632      (5)> MQTTPacket_freePublish:760
+20221222 042145.632      (5)< MQTTPacket_freePublish:764
+20221222 042145.632     (4)< Protocol_handlePublishes:526 (0)
+20221222 042145.632     (4)> MQTTSPacket_free_packet:572
+20221222 042145.632      (5)> MQTTSPacket_free_publish:639
+20221222 042145.632      (5)< MQTTSPacket_free_publish:644
+20221222 042145.632     (4)< MQTTSPacket_free_packet:576
+20221222 042145.632    (3)< MQTTSProtocol_handlePublishes:660 (0)
+20221222 042145.632   (2)< MQTTSProtocol_timeslice:256
+20221222 042145.632   (2)> add_prefix:830
+20221222 042145.632   (2)< add_prefix:837
+20221222 042145.632   (2)> Persistence_read_command:1273
+20221222 042145.632    (3)> free_prefix:849
+20221222 042145.632    (3)< free_prefix:852
+20221222 042145.632   (2)< Persistence_read_command:1285
+20221222 042145.632   (2)> MQTTProtocol_housekeeping:386
+20221222 042145.632   (2)< MQTTProtocol_housekeeping:398 (0)
+20221222 042145.632   (2)> MQTTSProtocol_housekeeping:167
+20221222 042145.632   (2)< MQTTSProtocol_housekeeping:187
+20221222 042145.632  (1)< Protocol_timeslice:197
+20221222 042145.632  (1)> Bridge_timeslice:209
+20221222 042145.632  (1)< Bridge_timeslice:237
+20221222 042145.632  (1)> Protocol_timeslice:131
+20221222 042145.632   (2)> Socket_getReadySocket:966
+20221222 042145.632    (3)> Socket_error:100
+20221222 042145.632    (3)< Socket_error:114 (4)
+20221222 042145.632   (2)< Socket_getReadySocket:1159 (0)
+20221222 042145.670 CWNAN0046I Broker stopping
+20221222 042145.670 CWNAN0016I MQTT protocol stopping
+20221222 042145.670 CWNAN0301I MQTT-S protocol stopping
+20221222 042145.670 CWNAN0017I Closing client C10C000000000003
+20221222 042145.670 CWNAN0017I Closing client C10C000000000002
+20221222 042145.670   (2)> MQTTProtocol_checkPendingWrites:353
+20221222 042145.670   (2)< MQTTProtocol_checkPendingWrites:375
+20221222 042145.670   (2)> Protocol_closing:99
+20221222 042145.670   (2)< Protocol_closing:118
+20221222 042145.670   (2)> MQTTProtocol_housekeeping:386
+20221222 042145.670   (2)< MQTTProtocol_housekeeping:398 (0)
+20221222 042145.670   (2)> MQTTSProtocol_housekeeping:167
+20221222 042145.670   (2)< MQTTSProtocol_housekeeping:187
+20221222 042145.670  (1)< Protocol_timeslice:197
+20221222 042145.670  (1)> Bridge_timeslice:209
+20221222 042145.670  (1)< Bridge_timeslice:237
+20221222 042145.670  (1)> MQTTProtocol_handlePublishes:318
+20221222 042145.670   (2)> Protocol_handlePublishes:444
+20221222 042145.670   (2)< Protocol_handlePublishes:526 (0)
+20221222 042145.670  (1)< MQTTProtocol_handlePublishes:329 (0)
+20221222 042145.670  (1)> Bridge_stop:76
+20221222 042145.670  (1)< Bridge_stop:88
+20221222 042145.670  (1)> Broker_shutdown:367
+20221222 042145.670   (2)> Bridge_terminate:185
+20221222 042145.670   (2)< Bridge_terminate:196
+20221222 042145.670   (2)> Protocol_terminate:70
+20221222 042145.670    (3)> MQTTProtocol_terminate:193
+20221222 042145.670     (4)> MQTTProtocol_shutdown:180
+20221222 042145.670      (5)> MQTTProtocol_shutdownclients:159
+20221222 042145.670      (5)< MQTTProtocol_shutdownclients:170
+20221222 042145.670      (5)> MQTTProtocol_shutdownclients:159
+20221222 042145.670      (5)< MQTTProtocol_shutdownclients:170
+20221222 042145.670     (4)< MQTTProtocol_shutdown:184
+20221222 042145.670    (3)< MQTTProtocol_terminate:195
+20221222 042145.670    (3)> MQTTSProtocol_terminate:150
+20221222 042145.670     (4)> MQTTProtocol_shutdownclients:159
+20221222 042145.670      (5)> MQTTProtocol_closeSession:1069
+20221222 042145.670       (6)> MQTTSPacket_send_disconnect:1157
+20221222 042145.670        (7)> MQTTSPacket_send_ack:787
+20221222 042145.670         (8)> MQTTSPacketSerialize_ack:54
+20221222 042145.670         (8)< MQTTSPacketSerialize_ack:65
+20221222 042145.670         (8)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.670         (8)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.670        (7)< MQTTSPacket_send_ack:791 (0)
+20221222 042145.670 4 aaaa::c30c:0:0:3:1884 C10C000000000003 -> MQTT-S DISCONNECT duration: 0 (0)
+20221222 042145.670       (6)< MQTTSPacket_send_disconnect:1163 (0)
+20221222 042145.670       (6)> MQTTSProtocol_emptyRegistrationList:1038
+20221222 042145.670       (6)< MQTTSProtocol_emptyRegistrationList:1045
+20221222 042145.670       (6)> MQTTProtocol_freeClient:918
+20221222 042145.670        (7)> MQTTProtocol_removeAllSubscriptions:609
+20221222 042145.670         (8)> SubscriptionEngines_unsubscribe:486
+20221222 042145.670          (9)> SubscriptionEngines_unsubscribe1:427
+20221222 042145.670          (9)< SubscriptionEngines_unsubscribe1:446
+20221222 042145.670          (9)> SubscriptionEngines_unsubscribeAll:455
+20221222 042145.670           (10)> SubscriptionEngines_unsubscribe1:427
+20221222 042145.670           (10)< SubscriptionEngines_unsubscribe1:446
+20221222 042145.670          (9)< SubscriptionEngines_unsubscribeAll:473
+20221222 042145.670         (8)< SubscriptionEngines_unsubscribe:499
+20221222 042145.670         (8)> SubscriptionEngines_unsubscribe:486
+20221222 042145.670          (9)> SubscriptionEngines_unsubscribe1:427
+20221222 042145.670          (9)< SubscriptionEngines_unsubscribe1:446
+20221222 042145.670         (8)< SubscriptionEngines_unsubscribe:499
+20221222 042145.670        (7)< MQTTProtocol_removeAllSubscriptions:612
+20221222 042145.670        (7)> MQTTProtocol_freeMessageList:1011
+20221222 042145.670         (8)> MQTTProtocol_emptyMessageList:993
+20221222 042145.670         (8)< MQTTProtocol_emptyMessageList:1001
+20221222 042145.670        (7)< MQTTProtocol_freeMessageList:1014
+20221222 042145.670        (7)> MQTTProtocol_freeMessageList:1011
+20221222 042145.670         (8)> MQTTProtocol_emptyMessageList:993
+20221222 042145.670         (8)< MQTTProtocol_emptyMessageList:1001
+20221222 042145.670        (7)< MQTTProtocol_freeMessageList:1014
+20221222 042145.670        (7)> MQTTProtocol_freeMessageList:1011
+20221222 042145.670         (8)> MQTTProtocol_emptyMessageList:993
+20221222 042145.670         (8)< MQTTProtocol_emptyMessageList:1001
+20221222 042145.670        (7)< MQTTProtocol_freeMessageList:1014
+20221222 042145.670        (7)> MQTTProtocol_freeMessageList:1011
+20221222 042145.670         (8)> MQTTProtocol_emptyMessageList:993
+20221222 042145.670         (8)< MQTTProtocol_emptyMessageList:1001
+20221222 042145.670        (7)< MQTTProtocol_freeMessageList:1014
+20221222 042145.670        (7)> MQTTProtocol_freeMessageList:1011
+20221222 042145.670         (8)> MQTTProtocol_emptyMessageList:993
+20221222 042145.670         (8)< MQTTProtocol_emptyMessageList:1001
+20221222 042145.670        (7)< MQTTProtocol_freeMessageList:1014
+20221222 042145.670        (7)> MQTTSProtocol_freeRegistrationList:1051
+20221222 042145.670         (8)> MQTTSProtocol_emptyRegistrationList:1038
+20221222 042145.670         (8)< MQTTSProtocol_emptyRegistrationList:1045
+20221222 042145.670        (7)< MQTTSProtocol_freeRegistrationList:1054
+20221222 042145.670       (6)< MQTTProtocol_freeClient:952
+20221222 042145.670      (5)< MQTTProtocol_closeSession:1205
+20221222 042145.670      (5)> MQTTProtocol_closeSession:1069
+20221222 042145.670       (6)> MQTTSPacket_send_disconnect:1157
+20221222 042145.670        (7)> MQTTSPacket_send_ack:787
+20221222 042145.670         (8)> MQTTSPacketSerialize_ack:54
+20221222 042145.670         (8)< MQTTSPacketSerialize_ack:65
+20221222 042145.670         (8)> MQTTSPacket_sendPacketBuffer:698
+20221222 042145.670         (8)< MQTTSPacket_sendPacketBuffer:728 (0)
+20221222 042145.670        (7)< MQTTSPacket_send_ack:791 (0)
+20221222 042145.670 4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S DISCONNECT duration: 0 (0)
+20221222 042145.670       (6)< MQTTSPacket_send_disconnect:1163 (0)
+20221222 042145.670       (6)> MQTTSProtocol_emptyRegistrationList:1038
+20221222 042145.670       (6)< MQTTSProtocol_emptyRegistrationList:1045
+20221222 042145.670       (6)> MQTTProtocol_freeClient:918
+20221222 042145.670        (7)> MQTTProtocol_removeAllSubscriptions:609
+20221222 042145.670         (8)> SubscriptionEngines_unsubscribe:486
+20221222 042145.670          (9)> SubscriptionEngines_unsubscribe1:427
+20221222 042145.670          (9)< SubscriptionEngines_unsubscribe1:446
+20221222 042145.670          (9)> SubscriptionEngines_unsubscribeAll:455
+20221222 042145.670           (10)> SubscriptionEngines_unsubscribe1:427
+20221222 042145.670 Removing subscription C10C000000000002, /led_control, 0
+========== End of trace dump ==========
+
+=========== Start of heap dump ==========
+à   <ÓÓ
+   Ë     Ñ˚ˇ	¸˚ˇ	t¸ˇ	Ï¸ˇ	   lˇˇ	                             õ…£cl˛ˇ	    l˝ˇ	    Ï˛ˇ	        Ï˝ˇ	z  ~  ì{  ≤{  õ…£cˇˇ  U©öøú  l˝ˇ	                                                                                                                                                                                                                                                                 4
+                                                                                                                                    ¥
+4
+¥
+(                                           U©öø   config.mqtt <Ó   1.3.0.2 Ó   Mar 16 2018 08:33:43         4‡˛	Ä‘  IÕ£c”õ           Socket_getParentListener 00002 to subscribers list                                                               IÕ£c”õ          Socket_getParentListener 10C000000000002 -> MQTT-S PINGRESP (0)                                     %             IÕ£c”õ          MQTTSProtocol_timeslice ubscribers  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          «              IÕ£c”õ          MQTTSPacket_Factory greq ish ibers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ò             IÕ£c”õ          MQTTSPacket_publish greq edTopicId e scribers list                                                  ó            IÕ£c”õ          MQTTSPacket_publish ket redTopicId e 003 -> MQTT-S PINGRESP (0)                                     Ω            IÕ£c”õ          MQTTSPacket_Factory Pingreqs on rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÷      ˇˇˇˇ   IÕ£c”õ          Protocol_getclientbyaddr Common  ame scribers list                                                  Ñ             IÕ£c”õ          Protocol_getclientbyaddr hCommon d e 002 -> MQTT-S PINGRESP (0)                                     á             IÕ£c”õ 	         MQTTSProtocol_handlePublishes icId 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          e      ˇˇˇˇ   IÕ£c”õ 
+         4 aaaa::c30c:0:0:3:1884 C10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ˘           IÕ£c”õ          MQTTSProtocol_getRegisteredTopicName scribers list                                                  Ì             IÕ£c”õ          MQTTSProtocol_getRegisteredTopicName 003 -> MQTT-S PINGRESP (0)                                     Ù             IÕ£c”õ          Protocol_handlePublishes fer ed rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          º      ˇˇˇˇ   IÕ£c”õ          Socket_getParentListener  er ibers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c”õ          Socket_getParentListener  scribers1  002 -> MQTT-S PINGRESP (0)                                     %             IÕ£c”õ          Protocol_processPublication 000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÷              IÕ£c”õ          SubscriptionEngines_setRetained rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ‘             IÕ£c”õ          SubscriptionEngines_setRetained1  subscribers list                                                  û             IÕ£c”õ          SubscriptionEngines_setRetained1 0000003 -> MQTT-S PINGRESP (0)                                     ∆            IÕ£cÿõ           SubscriptionEngines_setRetained  s 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ‹             IÕ£cÿõ          SubscriptionEngines_getSubscribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ñ            IÕ£cÿõ          SubscriptionEngines_getSubscribers1  002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          &             IÕ£cÿõ          SubscriptionEngines_getSubscribers1 0003 -> MQTT-S PINGRESP (0)                                     F             IÕ£cÿõ          SubscriptionEngines_getSubscribers2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              O             IÕ£cÿõ          Adding client C10C000000000002 to subscribers list                                                  á           IÕ£cÿõ          SubscriptionEngines_getSubscribers2  002 -> MQTT-S PINGRESP (0)                                     t             IÕ£cÿõ          SubscriptionEngines_getSubscribers  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          å             IÕ£cÿõ          Protocol_startOrQueuePublish picId  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              S             IÕ£cÿõ 	         MQTTSProtocol_getRegisteredTopicId ubscribers list                                                  ˛             IÕ£cÿõ 
+         MQTTSProtocol_getRegisteredTopicId  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                     IÕ£cÿõ          MQTTProtocol_startPublish ained rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              î              IÕ£cÿõ          MQTTProtocol_startPublishCommon  ame scribers list                                                  m              IÕ£cÿõ       	   MQTTSProtocol_startPublishCommon d e 002 -> MQTT-S PINGRESP (0)                                     O             IÕ£cÿõ       
+   MQTTSProtocol_getRegisteredTopicId 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ˛      ˇˇˇˇ   IÕ£cÿõ       
+   MQTTSProtocol_getRegisteredTopicId 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                         IÕ£cÿõ       
+   MQTTSPacket_send_publish  scribers1  scribers list                                                  ±             IÕ£cÿõ          MQTTSPacket_send dlePingreqs 00000000003 -> MQTT-S PINGRESP (0)                                     Â             IÕ£cÿõ          MQTTSPacket_sendPacketBuffer es rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ∫             IÕ£cÿõ          MQTTSPacket_sendPacketBuffer 2 to subscribers list                                                  ÿ            IÕ£c‰õ           MQTTSPacket_send ize_ack tained  0000002 -> MQTT-S PINGRESP (0)                                     	            IÕ£c‰õ          4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∫            IÕ£c‰õ       
+   MQTTSPacket_send_publish fer ed1 s 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ≈            IÕ£c‰õ       
+   MQTTSPacket_free_packet g ained Id   scribers list                                                  <             IÕ£c‰õ          MQTTSPacket_free_publish 10C000000000003 -> MQTT-S PINGRESP (0)                                                 IÕ£c‰õ          MQTTSPacket_free_publish g ites rs1 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ñ             IÕ£c‰õ       
+   MQTTSPacket_free_packet  bscribers1  scribers list                                                  @            IÕ£c‰õ       	   MQTTSProtocol_startPublishCommon s e 002 -> MQTT-S PINGRESP (0)                                     Ü            IÕ£c‰õ          MQTTProtocol_startPublishCommon Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Å             IÕ£c‰õ 	         MQTTProtocol_startPublish qs 00000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              †             IÕ£c‰õ 
+         Protocol_startOrQueuePublish picName scribers list                                                  y            IÕ£c‰õ          Protocol_processPublication opicName 003 -> MQTT-S PINGRESP (0)                                     B             IÕ£c‰õ          MQTTPacket_freePublish h shes n rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ¯             IÕ£c‰õ          MQTTPacket_freePublish d tained  ame scribers list                                                  ¸            IÕ£c‰õ          Protocol_handlePublishes Writes  d e 002 -> MQTT-S PINGRESP (0)                                                 IÕ£c‰õ          MQTTSPacket_free_packet gWrites  0000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          <      ˇˇˇˇ   IÕ£c‰õ          MQTTSPacket_free_publish 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c‰õ          MQTTSPacket_free_publish  dTopicName scribers list                                                  Ñ             IÕ£c‰õ          MQTTSPacket_free_packet g dTopicName 003 -> MQTT-S PINGRESP (0)                                     @             IÕ£c‰õ          MQTTSProtocol_handlePublishes d rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          î            IÕ£cÈõ           MQTTSProtocol_timeslice ng cribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                            IÕ£cÈõ          add_prefix meslice  ener on ribers1  002 -> MQTT-S PINGRESP (0)                                     >             IÕ£cÈõ          add_prefix slice ry ication ned rs1  002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          E      ˇˇˇˇ   IÕ£cÈõ          Persistence_read_command tained  s2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ˘             IÕ£cÈõ          free_prefix eslice yaddr tained1  subscribers list                                                  Q             IÕ£cÈõ          free_prefix adySocket blishes d1 0000002 -> MQTT-S PINGRESP (0)                                     T            IÕ£cÈõ          Persistence_read_command 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£cÈõ          MQTTProtocol_housekeeping dTopicName 003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ç             IÕ£cÈõ          MQTTProtocol_housekeeping dTopicName 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          é            IÕ£cÈõ 	         MQTTSProtocol_housekeeping ites rs1 0003 -> MQTT-S PINGRESP (0)                                     ß             IÕ£cÈõ 
+         MQTTSProtocol_housekeeping ites rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ª              IÕ£cÈõ          Protocol_timeslice tener 00002 to subscribers list                                                  ≈              IÕ£cÈõ          Bridge_timeslice istener on ribers2  002 -> MQTT-S PINGRESP (0)                                     —              IÕ£cÈõ          Bridge_timeslice eslice etained rs  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ì       ˇˇˇˇ   IÕ£cÈõ          Protocol_timeslice  setRetained1 0000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              É             IÕ£cÈõ          Socket_getReadySocket tRetained1 d e scribers list                                                  ∆             IÕ£cÈõ          Socket_continueWrites tRetained Id e 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          £            IÕ£cÈõ          Socket_continueWrites tSubscribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ∑            IÕ£cÈõ          Socket_getReadySocket dr bscribers1  scribers list                                                  á           IÕ£cÈõ          MQTTProtocol_checkPendingWrites rs1  002 -> MQTT-S PINGRESP (0)                                     a             IÕ£cx•	           MQTTProtocol_checkPendingWrites rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          w      ˇˇˇˇ   IÕ£cx•	          Socket_getParentListener 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                          IÕ£cx•	          Socket_getParentListener edTopicName scribers list                                                  %             IÕ£cx•	          MQTTSProtocol_timeslice redTopicName 003 -> MQTT-S PINGRESP (0)                                     «              IÕ£cx•	          MQTTSPacket_Factory shes ish ed 00000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ò              IÕ£cx•	          MQTTSPacket_publish ener edTopicId e scribers list                                                  ó             IÕ£cx•	          MQTTSPacket_publish ener edTopicId e 002 -> MQTT-S PINGRESP (0)                                     Ω            IÕ£cx•	          MQTTSPacket_Factory ication 000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÷      ˇˇˇˇ   IÕ£cx•	          Protocol_getclientbyaddr tained rs  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ñ             IÕ£cx•	 	         Protocol_getclientbyaddr tained1 s1 bscribers list                                                  á            IÕ£cx•	 
+         MQTTSProtocol_handlePublishes d1 d  0003 -> MQTT-S PINGRESP (0)                                     e            IÕ£cx•	          4 aaaa::c30c:0:0:3:1884 C10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ‹           IÕ£cx•	          MQTTSProtocol_getRegisteredTopicName scribers list                                                  Ì            IÕ£cx•	          MQTTSProtocol_getRegisteredTopicName 002 -> MQTT-S PINGRESP (0)                                     Ù             IÕ£cx•	          Protocol_handlePublishes bscribers1 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          º             IÕ£cx•	          Socket_getParentListener bscribers2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£cx•	          Socket_getParentListener 00002 to subscribers list                                                  %             IÕ£cx•	          Protocol_processPublication ribers2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÷              IÕ£cx•	          SubscriptionEngines_setRetained rs  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ‘             IÕ£cx•	          SubscriptionEngines_setRetained1  subscribers list                                                  û            IÕ£c≥•	           SubscriptionEngines_setRetained1 d   002 -> MQTT-S PINGRESP (0)                                     ∆             IÕ£c≥•	          SubscriptionEngines_setRetained Id 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ‹            IÕ£c≥•	          SubscriptionEngines_getSubscribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ñ             IÕ£c≥•	          SubscriptionEngines_getSubscribers1  scribers list                                                  &             IÕ£c≥•	          SubscriptionEngines_getSubscribers1  003 -> MQTT-S PINGRESP (0)                                     F             IÕ£c≥•	          SubscriptionEngines_getSubscribers2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          O             IÕ£c≥•	       
+   Adding client C10C000000000002 to subscribers list                                                             IÕ£c≥•	          SubscriptionEngines_getSubscribers2  002 -> MQTT-S PINGRESP (0)                                     t             IÕ£c≥•	          SubscriptionEngines_getSubscribers 00003 -> MQTT-S PINGRESP (0)                                     å             IÕ£c≥•	 	         Protocol_startOrQueuePublish ed Id  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              S            IÕ£c≥•	 
+         MQTTSProtocol_getRegisteredTopicId ubscribers list                                                  ˛             IÕ£c≥•	          MQTTSProtocol_getRegisteredTopicId 00002 -> MQTT-S PINGRESP (0)                                                IÕ£c≥•	          MQTTProtocol_startPublish 0C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          î              IÕ£c≥•	          MQTTProtocol_startPublishCommon rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              m              IÕ£c≥•	       	   MQTTSProtocol_startPublishCommon d   002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          O             IÕ£c≥•	       
+   MQTTSProtocol_getRegisteredTopicId 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ˛             IÕ£c≥•	       
+   MQTTSProtocol_getRegisteredTopicId 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                         IÕ£c≥•	       
+   MQTTSPacket_send_publish on mon Name scribers list                                                  ±            IÕ£c≥•	          MQTTSPacket_send rtPublishCommon ame 002 -> MQTT-S PINGRESP (0)                                     Â             IÕ£c≥•	          MQTTSPacket_sendPacketBuffer on  d  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∫             IÕ£cÚ•	           MQTTSPacket_sendPacketBuffer ed1 0000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ÿ            IÕ£cÚ•	          MQTTSPacket_send ueuePublish ed  ame scribers list                                                  	            IÕ£cÚ•	          4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          B            IÕ£cÚ•	       
+   MQTTSPacket_send_publish  scribers1 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ≈            IÕ£cÚ•	       
+   MQTTSPacket_free_packet g scribers1  scribers list                                                  <             IÕ£cÚ•	          MQTTSPacket_free_publish g ites rs e 002 -> MQTT-S PINGRESP (0)                                                  IÕ£cÚ•	          MQTTSPacket_free_publish g ites 00000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ñ      ˇˇˇˇ   IÕ£cÚ•	       
+   MQTTSPacket_free_packet  tained rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              @             IÕ£cÚ•	       	   MQTTSProtocol_startPublishCommon s1  scribers list                                                  Ü            IÕ£cÚ•	 	         MQTTProtocol_startPublishCommon  0000003 -> MQTT-S PINGRESP (0)                                     Å             IÕ£cÚ•	 
+         MQTTProtocol_startPublish hes 0000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              †             IÕ£cÚ•	          Protocol_startOrQueuePublish ed Name scribers list                                                  y            IÕ£cÚ•	          Protocol_processPublication ned1 ame 002 -> MQTT-S PINGRESP (0)                                     B             IÕ£cÚ•	          MQTTPacket_freePublish Retained1 s1 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ¯             IÕ£cÚ•	          MQTTPacket_freePublish d tained rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ¸            IÕ£cÚ•	          Protocol_handlePublishes Writes o subscribers list                                                              IÕ£cÚ•	          MQTTSPacket_free_packet gWrites rs2 0003 -> MQTT-S PINGRESP (0)                                     <            IÕ£cÚ•	          MQTTSPacket_free_publish 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£cÚ•	          MQTTSPacket_free_publish  dTopicName scribers list                                                  Ñ            IÕ£cÚ•	          MQTTSPacket_free_packet g dTopicName 002 -> MQTT-S PINGRESP (0)                                     @             IÕ£c¶	           MQTTSProtocol_handlePublishes d Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          î            IÕ£c¶	          MQTTSProtocol_timeslice ng cribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                            IÕ£c¶	          add_prefix meslice  ener  scribers1  scribers list                                                  >             IÕ£c¶	          add_prefix slice ry ication ned rs1  003 -> MQTT-S PINGRESP (0)                                     E      ˇˇˇˇ   IÕ£c¶	          Persistence_read_command tained  s2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ˘      ˇˇˇˇ   IÕ£c¶	          free_prefix eslice yaddr tained1 0000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Q            IÕ£c¶	          free_prefix adySocket ngreqs ed1 ame 002 -> MQTT-S PINGRESP (0)                                     T             IÕ£c¶	          Persistence_read_command tained Name 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                ˇˇˇˇ   IÕ£c¶	          MQTTProtocol_housekeeping scribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ç             IÕ£c¶	 	         MQTTProtocol_housekeeping scribers1  scribers list                                                  é            IÕ£c¶	 
+         MQTTSProtocol_housekeeping ites rs1  003 -> MQTT-S PINGRESP (0)                                     ß             IÕ£c¶	          MQTTSProtocol_housekeeping ites rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ª              IÕ£c¶	          Protocol_timeslice tener 00002 to subscribers list                                                  ≈              IÕ£c¶	          Bridge_timeslice istener 10C000000000002 -> MQTT-S PINGRESP (0)                                     —              IÕ£c¶	          Bridge_timeslice eslice ubscribers 00003 -> MQTT-S PINGRESP (0)                                     Ì              IÕ£c¶	          Protocol_timeslice  greq ish ed 00000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              É             IÕ£c¶	          Socket_getReadySocket eq edTopicId e scribers list                                                  ∆             IÕ£c¶	          Socket_error ublish ket redTopicId e 002 -> MQTT-S PINGRESP (0)                                     d             IÕ£c¶	          Socket_error actory Pingreqs ed rs1 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          r            IÕ£c¶	          Socket_getReadySocket dr Common rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              á            IÕ£c‡:
+           MQTTProtocol_checkPendingWrites   subscribers list                                                  a             IÕ£c‡:
+          MQTTProtocol_checkPendingWrites Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          w      ˇˇˇˇ   IÕ£c‡:
+          Protocol_closing 3:1884 C10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              c             IÕ£c‡:
+          Protocol_closing RegisteredTopicName scribers list                                                  v             IÕ£c‡:
+          MQTTProtocol_housekeeping dTopicName 002 -> MQTT-S PINGRESP (0)                                     Ç             IÕ£c‡:
+          MQTTProtocol_housekeeping er ed Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          é            IÕ£c‡:
+          MQTTSProtocol_housekeeping r ibers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ß              IÕ£c‡:
+          MQTTSProtocol_housekeeping ined rs1  scribers list                                                  ª              IÕ£c‡:
+          Protocol_timeslice lication 000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ≈              IÕ£c‡:
+ 	         Bridge_timeslice es_setRetained  s2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              —              IÕ£c‡:
+ 
+         Bridge_timeslice es_setRetained1  subscribers list                                                  Ì              IÕ£cÂ:
+          MQTTProtocol_handlePublishes ed1 0000003 -> MQTT-S PINGRESP (0)                                     >             IÕ£cÂ:
+          Protocol_handlePublishes tained rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          º      ˇˇˇˇ   IÕ£cÂ:
+          Protocol_handlePublishes bscribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                          IÕ£cÂ:
+          MQTTProtocol_handlePublishes ibers1  scribers list                                                  I            IÕ£cÂ:
+          Bridge_stop Engines_getSubscribers1 0003 -> MQTT-S PINGRESP (0)                                     L              IÕ£cÂ:
+          Bridge_stop Engines_getSubscribers2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          X              IÕ£cÂ:
+          Broker_shutdown 0C000000000002 to subscribers list                                                  o            IÕ£cÂ:
+          Bridge_terminate es_getSubscribers2  002 -> MQTT-S PINGRESP (0)                                     π              IÕ£cÂ:
+ 	         Bridge_terminate es_getSubscribers  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ƒ              IÕ£cÂ:
+ 
+         Protocol_terminate uePublish ed1 d  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              F             IÕ£cÂ:
+          MQTTProtocol_terminate eredTopicId ubscribers list                                                  ¡              IÕ£cÂ:
+          MQTTProtocol_shutdown teredTopicId  0003 -> MQTT-S PINGRESP (0)                                     ¥             IÕ£cˆ:
+          MQTTProtocol_shutdownclients on rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ü              IÕ£cˆ:
+          MQTTProtocol_shutdownclients on  ame scribers list                                                  ™              IÕ£cˆ:
+          MQTTProtocol_shutdownclients mon d e 002 -> MQTT-S PINGRESP (0)                                     ü              IÕ£cˆ:
+          MQTTProtocol_shutdownclients picId 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ™       ˇˇˇˇ   IÕ£cˆ:
+          MQTTProtocol_shutdown teredTopicId 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ∏             IÕ£cˆ:
+          MQTTProtocol_terminate h  scribers1  scribers list                                                  √              IÕ£cˆ:
+          MQTTSProtocol_terminate reqs es rs1  003 -> MQTT-S PINGRESP (0)                                     ñ              IÕ£c˚:
+          MQTTProtocol_shutdownclients es rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ü       ˇˇˇˇ   IÕ£c ;
+          MQTTProtocol_closeSession er 00000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              -             IÕ£c ;
+          MQTTSPacket_send_disconnect mmon ame 002 -> MQTT-S PINGRESP (0)                                     Ö             IÕ£c ;
+          MQTTSPacket_send_ack 84 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                       IÕ£c ;
+          MQTTSPacketSerialize_ack fer  d rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              6              IÕ£c ;
+          MQTTSPacketSerialize_ack  sh picId   scribers list                                                  A              IÕ£c ;
+          MQTTSPacket_sendPacketBuffer 00000000003 -> MQTT-S PINGRESP (0)                                     ∫            IÕ£c ;
+          MQTTSPacket_sendPacketBuffer es 00000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÿ            IÕ£c ;
+          MQTTSPacket_send_ack et  tained rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                          IÕ£c ;
+ 	      	   4 aaaa::c30c:0:0:3:1884 C10C000000000003 -> MQTT-S DISCONNECT duration: 0 (0)                       Ü            IÕ£c ;
+ 
+         MQTTSPacket_send_disconnect mon  d 00003 -> MQTT-S PINGRESP (0)                                     ã            IÕ£c ;
+          MQTTSProtocol_emptyRegistrationList 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c ;
+          MQTTSProtocol_emptyRegistrationList  scribers list                                                               IÕ£c ;
+          MQTTProtocol_freeClient ion opicName 002 -> MQTT-S PINGRESP (0)                                     ñ             IÕ£c ;
+          MQTTProtocol_removeAllSubscriptions 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          a             IÕ£c ;
+          SubscriptionEngines_unsubscribe rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ê            IÕ£c ;
+       	   SubscriptionEngines_unsubscribe1  subscribers list                                                  ´             IÕ£c ;
+       	   SubscriptionEngines_unsubscribe1 s2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          æ      ˇˇˇˇ   IÕ£c ;
+       	   SubscriptionEngines_unsubscribeAll 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              «             IÕ£c ;
+       
+   SubscriptionEngines_unsubscribe1 ame scribers list                                                  ´            IÕ£c2;
+        
+   SubscriptionEngines_unsubscribe1 ame 002 -> MQTT-S PINGRESP (0)                                     æ             IÕ£c2;
+       	   SubscriptionEngines_unsubscribeAll  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ÿ             IÕ£c2;
+          SubscriptionEngines_unsubscribe rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Û             IÕ£c2;
+          SubscriptionEngines_unsubscribe rs1  scribers list                                                  Ê             IÕ£c2;
+       	   SubscriptionEngines_unsubscribe1 s1  002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ´      ˇˇˇˇ   IÕ£c2;
+       	   SubscriptionEngines_unsubscribe1 s2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              æ             IÕ£c2;
+          SubscriptionEngines_unsubscribe   subscribers list                                                  Û             IÕ£c2;
+          MQTTProtocol_removeAllSubscriptions 0002 -> MQTT-S PINGRESP (0)                                     d             IÕ£c2;
+          MQTTProtocol_freeMessageList ed 00000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Û      ˇˇˇˇ   IÕ£c2;
+ 	         MQTTProtocol_emptyMessageList bers e 003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ·             IÕ£c2;
+ 
+         MQTTProtocol_emptyMessageList bers1  scribers list                                                  È             IÕ£c2;
+          MQTTProtocol_freeMessageList es rs1 0003 -> MQTT-S PINGRESP (0)                                     ˆ            IÕ£c2;
+          MQTTProtocol_freeMessageList es rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Û             IÕ£c2;
+          MQTTProtocol_emptyMessageList  to subscribers list                                                  ·             IÕ£c2;
+          MQTTProtocol_emptyMessageList 0000000002 -> MQTT-S PINGRESP (0)                                     È             IÕ£c2;
+          MQTTProtocol_freeMessageList ibers  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ˆ             IÕ£c2;
+          MQTTProtocol_freeMessageList ed1 0000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Û            IÕ£c2;
+          MQTTProtocol_emptyMessageList icId e scribers list                                                  ·            IÕ£c2;
+          MQTTProtocol_emptyMessageList icId e 003 -> MQTT-S PINGRESP (0)                                     È            IÕ£c2;
+          MQTTProtocol_freeMessageList ibers 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ˆ             IÕ£c5;
+           MQTTProtocol_freeMessageList on rs1  scribers list                                                  Û            IÕ£c5;
+          MQTTProtocol_emptyMessageList s  s1  002 -> MQTT-S PINGRESP (0)                                     ·             IÕ£c5;
+          MQTTProtocol_emptyMessageList s Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          È      ˇˇˇˇ   IÕ£c5;
+          MQTTProtocol_freeMessageList 00000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ˆ            IÕ£c5;
+          MQTTProtocol_freeMessageList picName scribers list                                                  Û             IÕ£c5;
+          MQTTProtocol_emptyMessageList icName 003 -> MQTT-S PINGRESP (0)                                     ·             IÕ£c5;
+          MQTTProtocol_emptyMessageList d rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          È      ˇˇˇˇ   IÕ£c5;
+          MQTTProtocol_freeMessageList picId 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ˆ             IÕ£c5;
+          MQTTSProtocol_freeRegistrationList   002 -> MQTT-S PINGRESP (0)                                                  IÕ£c5;
+ 	         MQTTSProtocol_emptyRegistrationList 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                ˇˇˇˇ   IÕ£c5;
+ 
+         MQTTSProtocol_emptyRegistrationList 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c5;
+          MQTTSProtocol_freeRegistrationList ubscribers list                                                               IÕ£c5;
+          MQTTProtocol_freeClient ishes d1 d 00002 -> MQTT-S PINGRESP (0)                                     ∏            IÕ£c5;
+          MQTTProtocol_closeSession 0C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              µ            IÕ£c8;
+          MQTTProtocol_closeSession dTopicName 003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              -            IÕ£c8;
+          MQTTSPacket_send_disconnect opicName 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ö             IÕ£c8;
+          MQTTSPacket_send_ack hes bscribers1 0003 -> MQTT-S PINGRESP (0)                                                  IÕ£c8;
+          MQTTSPacketSerialize_ack bscribers2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              6              IÕ£c8;
+          MQTTSPacketSerialize_ack 00002 to subscribers list                                                  A             IÕ£c8;
+          MQTTSPacket_sendPacketBuffer ibers2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∫             IÕ£c8;
+          MQTTSPacket_sendPacketBuffer ed rs  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÿ            IÕ£c8;
+          MQTTSPacket_send_ack etRetained1 d  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                          IÕ£c8;
+ 	         4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S DISCONNECT duration: 0 (0)                       ∆            IÕ£c8;
+ 
+         MQTTSPacket_send_disconnect ned Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ã            IÕ£c8;
+          MQTTSProtocol_emptyRegistrationList 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c8;
+          MQTTSProtocol_emptyRegistrationList  scribers list                                                               IÕ£c8;
+          MQTTProtocol_freeClient ubscribers1  002 -> MQTT-S PINGRESP (0)                                     ñ             IÕ£c8;
+          MQTTProtocol_removeAllSubscriptions 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          a      ˇˇˇˇ   IÕ£c8;
+          SubscriptionEngines_unsubscribe o subscribers list                                                  Ê            IÕ£c8;
+       	   SubscriptionEngines_unsubscribe1 s2  scribers list                                                  ´             IÕ£c8;
+       	   SubscriptionEngines_unsubscribe1 s 00003 -> MQTT-S PINGRESP (0)                                     æ             IÕ£c8;
+       	   SubscriptionEngines_unsubscribeAll  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              «             IÕ£c8;
+       
+   SubscriptionEngines_unsubscribe1 d ubscribers list                                                  ´             IÕ£cJ;
+           Removing subscription C10C000000000002, /led_control, 0                                                        IÕ£cÅõ          MQTTProtocol_startPublish 0C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          î              IÕ£cÅõ          MQTTProtocol_startPublishCommon rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              m              IÕ£cÅõ       	   MQTTSProtocol_startPublishCommon d   scribers list                                                  O             IÕ£cÅõ       
+   MQTTSProtocol_getRegisteredTopicId 00003 -> MQTT-S PINGRESP (0)                                     ˛             IÕ£cÅõ       
+   MQTTSProtocol_getRegisteredTopicId 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                     IÕ£cÅõ 	      
+   MQTTSPacket_send_publish Common Name scribers list                                                  ±            IÕ£cÅõ 
+         MQTTSPacket_send rtPublishCommon ame 002 -> MQTT-S PINGRESP (0)                                     Â             IÕ£cÅõ          MQTTSPacket_sendPacketBuffer on Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∫             IÕ£cÅõ          MQTTSPacket_sendPacketBuffer 00000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ÿ            IÕ£cÅõ          MQTTSPacket_send ueuePublish picName scribers list                                                  	            IÕ£cÅõ          4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          B            IÕ£cÅõ       
+   MQTTSPacket_send_publish  hes n rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ≈            IÕ£cÅõ       
+   MQTTSPacket_free_packet    r ed1 ame scribers list                                                  <            IÕ£cÅõ          MQTTSPacket_free_publish Writes  d e 002 -> MQTT-S PINGRESP (0)                                                  IÕ£cÅõ          MQTTSPacket_free_publish Writes 00000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ñ      ˇˇˇˇ   IÕ£cÅõ       
+   MQTTSPacket_free_packet  tained rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              @             IÕ£c¢õ        	   MQTTSProtocol_startPublishCommon s1  scribers list                                                  Ü            IÕ£c¢õ          MQTTProtocol_startPublishCommon  s1  003 -> MQTT-S PINGRESP (0)                                     Å             IÕ£c¢õ          MQTTProtocol_startPublish hes d rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          †             IÕ£c¢õ          Protocol_startOrQueuePublish ibers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              y            IÕ£c¢õ          Protocol_processPublication ribers1  002 -> MQTT-S PINGRESP (0)                                     B             IÕ£c¢õ          MQTTPacket_freePublish  C10C000000000003 -> MQTT-S PINGRESP (0)                                     ¯      ˇˇˇˇ   IÕ£c¢õ          MQTTPacket_freePublish d g ites rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ¸            IÕ£c¢õ          Protocol_handlePublishes Writes o subscribers list                                                              IÕ£c¢õ          MQTTSPacket_free_packet ishes s 00000002 -> MQTT-S PINGRESP (0)                                     <            IÕ£c¢õ 	         MQTTSPacket_free_publish 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c¢õ 
+         MQTTSPacket_free_publish  dTopicName 003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ñ             IÕ£c¢õ          MQTTSPacket_free_packet g dTopicName 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          @             IÕ£c¢õ          MQTTSProtocol_handlePublishes s Id 00003 -> MQTT-S PINGRESP (0)                                     î            IÕ£c¢õ          MQTTSProtocol_timeslice ng ites 00000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                            IÕ£c¢õ          add_prefix meslice tener Common Name scribers list                                                  >             IÕ£c¢õ          add_prefix slice istener on tes  ame 002 -> MQTT-S PINGRESP (0)                                     E      ˇˇˇˇ   IÕ£c¢õ          Persistence_read_command tained Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ˘      ˇˇˇˇ   IÕ£c¢õ          free_prefix eslice  setRetained1 0000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Q            IÕ£c¢õ          free_prefix adySocket tRetained1 ame scribers list                                                  T             IÕ£c¢õ          Persistence_read_command tained  ame 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                       IÕ£c®õ           MQTTProtocol_housekeeping scribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ç             IÕ£c®õ          MQTTProtocol_housekeeping scribers1  scribers list                                                  é            IÕ£c®õ          MQTTSProtocol_housekeeping ites rs1  002 -> MQTT-S PINGRESP (0)                                     ß              IÕ£c®õ          MQTTSProtocol_housekeeping ites rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ª              IÕ£c®õ          Protocol_timeslice tener 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ≈              IÕ£c®õ          Bridge_timeslice istener edTopicName 002 -> MQTT-S PINGRESP (0)                                     —              IÕ£c®õ          Bridge_timeslice eslice redTopicName 003 -> MQTT-S PINGRESP (0)                                     Ì              IÕ£c®õ          Protocol_timeslice  shes ish 00000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              É              IÕ£c®õ          Socket_getReadySocket er edTopicId e scribers list                                                  ∆             IÕ£c®õ 	         Socket_continueWrites er edTopicId e 002 -> MQTT-S PINGRESP (0)                                     £            IÕ£c®õ 
+         Socket_continueWrites ation ned1 s1 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∑            IÕ£c®õ          Socket_getReadySocket dr tained  s2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              á           IÕ£c®õ          MQTTProtocol_checkPendingWrites   subscribers list                                                  a            IÕ£c®õ          MQTTProtocol_checkPendingWrites  d  0003 -> MQTT-S PINGRESP (0)                                     w            IÕ£c®õ          Socket_getParentListener 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                          IÕ£c®õ          Socket_getParentListener edTopicName scribers list                                                  %            IÕ£c®õ          MQTTSProtocol_timeslice redTopicName 002 -> MQTT-S PINGRESP (0)                                     «              IÕ£c®õ          MQTTSPacket_Factory shes bscribers1 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ò             IÕ£c®õ          MQTTSPacket_pingreq ener bscribers2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ò             IÕ£c®õ          MQTTSPacket_pingreq ener 00002 to subscribers list                                                  ˚             IÕ£cÆõ           MQTTSPacket_Factory ication ribers2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÷      ˇˇˇˇ   IÕ£cÆõ          Protocol_getclientbyaddr tained rs  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ñ             IÕ£cÆõ          Protocol_getclientbyaddr tained1 0000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              á            IÕ£cÆõ          MQTTSProtocol_handlePingreqs ed1 d e 002 -> MQTT-S PINGRESP (0)                                     î             IÕ£cÆõ          MQTTSPacket_send_ack etRetained Id e 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                      IÕ£cÆõ          MQTTSPacketSerialize_ack bscribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              6              IÕ£cÆõ          MQTTSPacketSerialize_ack bscribers1  scribers list                                                  A              IÕ£cÆõ          MQTTSPacket_sendPacketBuffer ibers1  003 -> MQTT-S PINGRESP (0)                                     ∫             IÕ£cÆõ          MQTTSPacket_sendPacketBuffer ibers2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÿ            IÕ£cÆõ 	         MQTTSPacket_send_ack 000000002 to subscribers list                                                              IÕ£cÆõ 
+         4 aaaa::c30c:0:0:2:1884 C10C000000000002 -> MQTT-S PINGRESP (0)                                     t            IÕ£cÆõ          MQTTSPacket_free_packet ubscribers 00003 -> MQTT-S PINGRESP (0)                                     <             IÕ£cÆõ          MQTTSPacket_free_pingreq ish ed1 d  0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ò            IÕ£cÆõ          MQTTSPacket_free_pingreq edTopicId ubscribers list                                                  õ             IÕ£cÆõ          MQTTSPacket_free_packet redTopicId  0002 -> MQTT-S PINGRESP (0)                                     @            IÕ£cÆõ          MQTTSProtocol_handlePingreqs 00000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ò            IÕ£cÆõ          MQTTSProtocol_timeslice hCommon rs1 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                            IÕ£cÆõ          add_prefix ol_startPublishCommon s ubscribers list                                                  >             IÕ£cÆõ          add_prefix ol_getRegisteredTopicId  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          E             IÕ£cÆõ          Persistence_read_command edTopicId 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ˘            IÕ£cøõ           free_prefix send_publish hes on Name scribers list                                                  Q             IÕ£cøõ          free_prefix send rtPublishCommon d e 002 -> MQTT-S PINGRESP (0)                                     T             IÕ£cøõ          Persistence_read_command fer on Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                       IÕ£cøõ          MQTTProtocol_housekeeping er ed 00000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ç             IÕ£cøõ          MQTTProtocol_housekeeping sh ed1 ame scribers list                                                  é            IÕ£cøõ          MQTTSProtocol_housekeeping C000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ß              IÕ£cøõ          MQTTSProtocol_housekeeping ined Id 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ª              IÕ£cøõ          Protocol_timeslice cket g es picId e scribers list                                                  ≈              IÕ£cøõ          Bridge_timeslice publish g C000000000003 -> MQTT-S PINGRESP (0)                                     —              IÕ£cøõ 	         Bridge_timeslice publish g  000000000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          Ì       ˇˇˇˇ   IÕ£cøõ 
+         Protocol_timeslice cket  fer ed rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              É              IÕ£cøõ          Socket_getReadySocket lishCommon s1  scribers list                                                  ∆             IÕ£cøõ          Socket_continueWrites ishCommon  0000003 -> MQTT-S PINGRESP (0)                                     £             IÕ£cøõ          Socket_continueWrites ish hes d1 0000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∑            IÕ£cøõ          Socket_getReadySocket ublish ed1 ame scribers list                                                  á           IÕ£cøõ          MQTTProtocol_checkPendingWrites Name 002 -> MQTT-S PINGRESP (0)                                     a             IÕ£cøõ          MQTTProtocol_checkPendingWrites rs  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          w             IÕ£cøõ          Socket_getParentListener bscribers1 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                          IÕ£cøõ          Socket_getParentListener Writes rs1 bscribers list                                                  %             IÕ£cøõ          MQTTSProtocol_timeslice gWrites rs  0003 -> MQTT-S PINGRESP (0)                                     «              IÕ£c¡õ           MQTTSPacket_Factory lish on mon rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ò              IÕ£c¡õ          MQTTSPacket_pingreq lish  ained1 ame scribers list                                                  Ò             IÕ£c¡õ          MQTTSPacket_pingreq ket g es ed1 d e 002 -> MQTT-S PINGRESP (0)                                     ˚             IÕ£c¡õ          MQTTSPacket_Factory Publishes d Id  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ÷      ˇˇˇˇ   IÕ£c¡õ          Protocol_getclientbyaddr g cribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ñ             IÕ£c¡õ          Protocol_getclientbyaddr tained rs1  scribers list                                                  á             IÕ£c¡õ          MQTTSProtocol_handlePingreqs ed1 s1  003 -> MQTT-S PINGRESP (0)                                     î      ˇˇˇˇ   IÕ£c¡õ          MQTTSPacket_send_ack and tained1 s2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)                ˇˇˇˇ   IÕ£c¡õ          MQTTSPacketSerialize_ack tained 00000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              6             IÕ£c¡õ 	         MQTTSPacketSerialize_ack eqs picName 002 -> MQTT-S PINGRESP (0)                                     A              IÕ£c¡õ 
+         MQTTSPacket_sendPacketBuffer picName 002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ∫      ˇˇˇˇ   IÕ£c¡õ          MQTTSPacket_sendPacketBuffer  d rs 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ÿ            IÕ£c¡õ          MQTTSPacket_send_ack ping dTopicId   scribers list                                                              IÕ£c¡õ          4 aaaa::c30c:0:0:3:1884 C10C000000000003 -> MQTT-S PINGRESP (0)                                     ß            IÕ£c¡õ          MQTTSPacket_free_packet ng ites 00000002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          <             IÕ£c¡õ          MQTTSPacket_free_pingreq tained1 s 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ò             IÕ£c¡õ          MQTTSPacket_free_pingreq 10C000000000002 -> MQTT-S PINGRESP (0)                                     õ             IÕ£c¡õ          MQTTSPacket_free_packet etained  d 00003 -> MQTT-S PINGRESP (0)                                     @             IÕ£c¡õ          MQTTSProtocol_handlePingreqs ibers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ò            IÕ£c¡õ          MQTTSProtocol_timeslice  bscribers1  scribers list                                                                IÕ£c—õ           add_prefix inueWrites t ubscribers1  002 -> MQTT-S PINGRESP (0)                                     >             IÕ£c—õ          add_prefix inueWrites ngreqs ibers  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          E             IÕ£c—õ          Persistence_read_command on ribers2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ˘            IÕ£c—õ          free_prefix _checkPendingWrites o subscribers list                                                  Q             IÕ£c—õ          free_prefix _checkPendingWrites rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          T             IÕ£c—õ          Persistence_read_command 10C000000000003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1                           IÕ£c—õ          MQTTProtocol_housekeeping dTopicName scribers list                                                  Ç            IÕ£c—õ          MQTTProtocol_housekeeping dTopicName 002 -> MQTT-S PINGRESP (0)                                     é            IÕ£c—õ          MQTTSProtocol_housekeeping ined1 d  0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          ß             IÕ£c—õ 	         MQTTSProtocol_housekeeping ined1 s 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ª              IÕ£c—õ 
+         Protocol_timeslice  ener  ained rs1  scribers list                                                  ≈              IÕ£c—õ          Bridge_timeslice ry ication  es rs1  002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          —       ˇˇˇˇ   IÕ£c—õ          Bridge_timeslice tbyaddr tained rs2 0003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              Ì              IÕ£c—õ          Protocol_timeslice yaddr tained1  subscribers list                                                  É              IÕ£c—õ          Socket_getReadySocket ngreqs ed1 0000002 -> MQTT-S PINGRESP (0)                                     ∆             IÕ£c—õ          Socket_continueWrites tRetained rs 00002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          £      ˇˇˇˇ   IÕ£c—õ          Socket_continueWrites ck bscribers 00003 <- MQTT-S PUBLISH msgid: 0 qos: 0 retained: 1              ∑            IÕ£c—õ          Socket_getReadySocket ck bscribers1  scribers list                                                  á           IÕ£c—õ          MQTTProtocol_checkPendingWrites rs1 0003 -> MQTT-S PINGRESP (0)                                     a            IÕ£c—õ          MQTTProtocol_checkPendingWrites rs2 0002 -> MQTT-S PUBLISH msgid: 0 qos: 0 retained: 0 (0)          w             µˇ	    |∂ˇ	å
+       Ã              Ãµˇ	P   (0000) 20221222 040603.389 CWNAN9999I Really Small Message Broker u∑    ˇˇˇˇ    |∂ˇ	       |∫ˇ	Ãµˇ	B   åπˇ	ê   (0000) 20221222 040603.389 CWNAN9998I Part of Project Mosquitto in Eclipse
+(http://projects.eclipse.org/projects/technology.mosquitto)          |∫ˇ	   |∂ˇ	îªˇ	åπˇ	á   ‰∫ˇ	P   (0000) 20221222 040603.389 CWNAN0049I Configuration file name is config.mqtt    îªˇ	   |∫ˇ	¨ºˇ	‰∫ˇ	M   ¸ªˇ	P   (0000) 20221222 040603.390 CWNAN0053I Version 1.3.0.2, Mar 16 2018 08:33:43     ¨ºˇ	   îªˇ	‰˘ˇ	¸ªˇ	L   dΩˇ	0   Could not read configuration file %s            ÏΩˇ	0   No value for keyword %s on line %d              tæˇ	    Unrecognized topic direction %s Ïæˇ	    Setting property "%s" to %s     døˇ	0   Unrecognized boolean value %s on line number %d Ïøˇ	    Setting property "%s" to "%s"   d¿ˇ	    Adding value "%s" to list "%s"  ‹¿ˇ	    Setting property "%s" to %d     T¡ˇ	@   Unrecognized configuration keyword %s on line number %d         Ï¡ˇ	@   Cannot open %s file %s for writing, %ss will not be saved       Ñ¬ˇ	@   Cannot open %s file %s for reading, %ss will not be restored    √ˇ	    Restoring %ss from file %s      î√ˇ	@   Wildcard in publish topic %.20s from client %s not allowed      ,ƒˇ	0   Internal error; FFDC written to file %s         ¥ƒˇ	0   MQTT protocol starting, listening on port %d    <≈ˇ	0   Cannot start listener on port %d                ƒ≈ˇ	    MQTT protocol stopping          <∆ˇ	    Closing client %s               ¥∆ˇ	`   Socket error for client identifier %s, socket %d, peer address %s; ending connection            l«ˇ	`   Bad packet for client identifier %s, socket %d, peer address %s; ending connection              $»ˇ	@   Socket error on socket %d, peer address %s; ending connection   º»ˇ	P   Badly formed packet on socket %d, peer address %s; ending connection            d…ˇ	0   Unknown MQTT packet type %d on socket %d        Ï…ˇ	P   Connect was not first packet on socket %d, peer address %s; got %s              î ˇ	@   %d second keepalive timeout for client %s, ending connection    ,Àˇ	P   Incorrect configuration: acl_file requires password_file to be specified        ‘Àˇ	P   Trying PUBLISH again for client %s, socket %d, message identifier %d            |Ãˇ	@   Socket error for client %s, socket %d, ending connection        Õˇ	@   Trying PUBREL again for client %s, message identifier %d        ¨Õˇ	P   Refusing connection attempt for unauthorized client identifier %s               TŒˇ	P   Connection attempt using unsupported protocol %s version %d received            ¸Œˇ	P   Connection attempt to listener %d received from client %s on address %s         §œˇ	p   Duplicate connection attempt received for client identifier "%s" from address %s, ending oldest connection      l–ˇ	0   Disconnection request received from client %s   Ù–ˇ	0   Invalid user entry on line number %d            |—ˇ	0   Unrecognized user %s on line number %d          “ˇ	0   Invalid access control rule on line number %d   å“ˇ	    Uptime: %d seconds              ”ˇ	    Messages received: %d           |”ˇ	    Messages sent: %d               Ù”ˇ	`   Queued message limit reached for client %s. Number of messages discarded so far: %d             ¨‘ˇ	   Broker stopping ’ˇ	   Broker stopped  |’ˇ	`   First Failure Data Capture (FFDC) condition occurred, but FFDC writing turned off               4÷ˇ	    Configuration file name is %s   ¨÷ˇ	p   Packet %s received from client %s for message identifier %d, but no record of that message identifier found     t◊ˇ	`   Packet %s received from client %s for message identifier %d, but message is wrong QoS, %d       ,ÿˇ	`   Packet %s received from client %s for message identifier %d, but message is in wrong state      ‰ÿˇ	   Version %s, %s  LŸˇ	    Features included:              ƒŸˇ	    Maximum heap use: %d bytes      <⁄ˇ	`   Bridge connection %s not started because its client identifier %s is a duplicate                Ù⁄ˇ	    Connection %s is deleted        l€ˇ	    Error deleting connection %s    ‰€ˇ	0   No bridge connection with name %s               l‹ˇ	    Stopping bridge connection %s   ‰‹ˇ	    Unable to stop connection %s    \›ˇ	    Connection %s is now stopped    ‘›ˇ	0   Stopping connection %s on idle timeout          \ﬁˇ	0   %d queued messages discarded for client %s      ‰ﬁˇ	@   Unable to clear retained flag for system topic %s               |ﬂˇ	@   Discarding retained message with invalid topic name %s          ‡ˇ	0   Error getting network format for address %s     ú‡ˇ	    Processing command file %s      ·ˇ	0   Unexpected ping response received for client %s ú·ˇ	0   Socket error %d (%s) in %s for socket %d        $‚ˇ	    Cannot open socket              ú‚ˇ	    Cannot bind port %d             „ˇ	0   TCP listen call failed for port %d              ú„ˇ	    %s is not a valid IP address    ‰ˇ	P   Trying bridge connection %s address %s again, without private protocol          º‰ˇ	0   Autosaving persistent data after %d changes     DÂˇ	@   Autosaving persistent data after %d second interval             ‹Âˇ	0   Saving persistence state at user request        dÊˇ	P   Ignoring user request to save state because there are no changes                Áˇ	@   Failed to setsockopt SO_REUSEADDR on listening port %d          §Áˇ	0   Trying backup bridge connection %s              ,Ëˇ	    Starting bridge connection %s   §Ëˇ	0   Error starting bridge connection                ,Èˇ	P   Starting reconnection attempt for bridge connection %s, address %s              ‘Èˇ	0   TCP connect timeout for bridge connection %s    \Íˇ	@   Can't get connection completion state from socket               ÙÍˇ	P   Connect for bridge client %s, address %s, failed with TCP error code %d         úÎˇ	@   Connection acknowledgement rc %d received for client %s         4Ïˇ	0   Bridge connection %s to %s now established      ºÏˇ	0   Closing bridge backup connection %s             DÌˇ	P   Inbound bridge topic %s does not match any pattern for connection %s            ÏÌˇ	P   Outbound bridge topic %s does not match any pattern for connection %s           îÓˇ	    retained message                Ôˇ	   subscription    tÔˇ	p   Refusing connection attempt by client %s; maximum number of connections %d already reached for listener %d      <ˇ	@   Incorrect configuration: no addresses for bridge connection %s  ‘ˇ	`   Ping response not received within %d seconds for bridge connection %s; ending connection        åÒˇ	@   Connection with name %s already exists; add failed              $Úˇ	@   Message queue for client %s is more than %d%% full              ºÚˇ	@   Message queue for client %s is less than %d%% full              TÛˇ	0   Error saving retained message persistence file  ‹Ûˇ	0   Error saving subscription persistence file      dÙˇ	@   Client %s is not authorized to publish to topic: %s             ¸Ùˇ	@   Client %s is not authorized to subscribe to topic: %s           îıˇ	0   Cannot give read access to topic: %s            ˆˇ	@   Unrecognized configuration value %s on line number %d           ¥ˆˇ	`   Invalid topic syntax in subscription %.20s from client identifier %s, peer address %s           l˜ˇ	0   MQTT-S protocol starting, listening on port %d  Ù˜ˇ	    MQTT-S protocol stopping        l¯ˇ	0   Unknown interface %s for if_nametoindex         Ù¯ˇ	0   Adding multicast interface %s on interface %s   T˘ˇ	P   (0000) 20221222 040603.390 CWNAN0054I Features included: bridge MQTTS           ‰˘ˇ	   ¨ºˇ	˚ˇ	T˘ˇ	G   L˙ˇ	p   (0000) 20221222 040603.390 CWNAN9993I Authors: Ian Craggs (icraggs@uk.ibm.com), Nicholas O'Leary                ˚ˇ	   ‰˘ˇ	Ï
+L˙ˇ	a   Ñ˚ˇ	        º∑    õ∑              ¸˚ˇ	        õ∑                      t¸ˇ	        ˆ∑    õ∑              Ï¸ˇ	        õ∑                      l˝ˇ	    | 
+ 
+                       Ï˝ˇ	                                    l˛ˇ	                                    Ï˛ˇ	                        Pˇˇ	ˇˇˇˇˇˇˇˇlˇˇ	    ‰ˇˇ	§ 
+ 
+z  å 
+ 
+        ‰ˇˇ	    42
+Xƒ                    L  
+`       [                                                 
+[   
+ˇˇˇˇ    å 
+                 
+                                    å 
+                                     
+   INADDR_ANY      | 
+        
+L  
+    ‰ 
+`                      
+ \                              § 
+\  § 
+ˇˇˇˇ    $ 
+                § 
+                                    $ 
+                                    § 
+   INADDR_ANY       
+   | 
+    ‰ 
+    § 
+                                     
+    ¥1
+Éƒ                    å 
+                                     
+    ‹4
+Éƒ              ˇ     Ñ 
+      red_on  0030003                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ‰
+                Ç      #       d
+d
+0     #  < mosq/XbbkkQ8smOYjqGGtzv             	
+†   (0000) 20221222 040924.416 CWNAN0033I Connection attempt to listener 1883 received from client mosq/XbbkkQ8smOYjqGGtzv on address 127.0.0.1:58987               ‰	
+   §f
+
+
+‰g
+?   
+
+   ‰	
+å
+Dh
+F   d
+
+Ä   (0001) 20221222 041819.938 CWNAN0000I Client connected to udp port 1884 from C10C000000000002 (aaaa::c30c:0:0:2:1884)   àààà    
+           _
+   º
+    
+
+                      ¥
+                                    4
+    ƒ
+ƒ
+                      ¥
+                                    4
+                                    ¥
+                                    ,
+`   (0000) 20221222 040603.391 CWNAN0014I MQTT protocol starting, listening on port 1883            Ï
+   ˚ˇ	Ï
+,
+U   T
+                  ƒ
+           T
+   ,
+`   (0000) 20221222 040603.391 CWNAN0300I MQTT-S protocol starting, listening on port 1884          Ï
+   Ï
+4
+,
+W   \
+   Ã
+    L
+   Ã
+    $SYS/broker/version             L
+   1.3.0.2         ¥
+    ú
+‘U
+‘M
+\
+               4
+   §
+    $
+   §
+    $SYS/broker/timestamp           $
+    Mar 16 2018 08:33:43            ú
+    ¨O
+¥
+§Y
+4
+-               
+    $SYS/broker/internal/more_work% å
+   
+
+    §h
+F   4
+   Ï
+|$
+§
+v   §
+Ä   (0000) 20221222 040603.410 CWNAN0000I Client connected to udp port 1884 from C10C000000000003 (aaaa::c30c:0:0:3:1884)           î
+    C10C000000000002                ƒ
+`      $#
+î
+            A              IÕ£c    ƒ 
+d 
+$!
+§!
+$"
+           §"
+            d 
+                                    ƒ 
+                                    $!
+                                    §!
+                                    $"
+                                    §"
+                                    $#
+    aaaa::c30c:0:0:2:1884           |$
+   4
+Ãb
+Ï$
+v   Ï$
+Ä   (0000) 20221222 040603.464 CWNAN0000I Client connected to udp port 1884 from C10C000000000002 (aaaa::c30c:0:0:2:1884)           ‹%
+   L3
+ú,
+e
+≤   ú,
+   ‹%
+tc
+‘e
+v   Ã/
+   0       ò3
+H   l0
+   ‹0
+    L1
+   ‹0
+   /led_control    L1
+   red_on          ¥1
+                l0
+               42
+                º
+               ‹2
+   
+    Ã/
+   ,3
+   D`
+L3
+îa
+n   L3
+   ,3
+‹%
+d
+
+v   l3
+    Ã3
+        ‹2
+$               Ã3
+    ¸K
+å5
+l3
+,4
+*              ,4
+   Ã6
+    º4
+   º4
+   100     h4
+E   ‹4
+        ¨O
+,P
+6
+'               å5
+    Ã3
+        8
+-              6
+   7
+    \7
+   Ã6
+0   $SYS/broker/internal/not_more_work%             7
+0   $SYS/broker/internal/timeout_zero%              \7
+   0               8
+   Ñ8
+    9
+   Ñ8
+0   $SYS/broker/internal/timeout_non_zero%          9
+   100             Ã9
+    $SYS/broker/messages/sent       ¸9
+   Ã9
+    º:
+   º:
+   4208            $;
+    ‰>
+        ¸9
+!               §;
+    ‰>
+    d?
+‘;
+*               ‘;
+   D<
+    ‘<
+   D<
+0   $SYS/broker/messages/per second/sent            ‘<
+   22              å=
+    $SYS/broker/messages/received   º=
+   å=
+    |>
+   |>
+   4204            ‰>
+    ¨O
+$;
+§;
+º=
+%               d?
+    §;
+        î?
+.              î?
+   @
+    î@
+   @
+0   $SYS/broker/messages/per second/received        î@
+   22              LA
+    $SYS/broker/bytes/sent          |A
+   LA
+    <B
+   <B
+   31561           §B
+    ,P
+    $C
+|A
+               $C
+    §B
+dF
+‰F
+TC
+(               TC
+   ƒC
+    TD
+   ƒC
+0   $SYS/broker/bytes/per second/sent               TD
+   165             E
+    $SYS/broker/bytes/received      <E
+   E
+    ¸E
+   ¸E
+   31530           dF
+    $C
+        <E
+#              ‰F
+    $C
+        G
+,              G
+   ÑG
+    H
+   ÑG
+0   $SYS/broker/bytes/per second/received           H
+   165             ÃH
+    $SYS/broker/heap/current size   ¸H
+   ÃH
+    ºI
+   ºI
+   133488 bytes    $J
+    R
+    Ã^
+¸H
+-               §J
+    $SYS/broker/heap/maximum size   ‘J
+   §J
+    îK
+   îK
+   133728 bytes    ¸K
+    ,P
+Ã3
+R
+‘J
+-              |L
+    $SYS/broker/uptime              ¨L
+   |L
+    lM
+   lM
+   942 seconds     ‘M
+    ¥
+        ¨L
+!              TN
+    $SYS/broker/restart count       ÑN
+   TN
+    DO
+   DO
+   0               ¨O
+    ‹4
+ú
+‰>
+ÑN
+               ,P
+    ‹4
+¸K
+§B
+\P
+'               \P
+   ÃP
+    \Q
+   ÃP
+0   $SYS/broker/client count/connected              \Q
+   0               R
+    ¸K
+$J
+    DR
+*               DR
+   ¥R
+    DS
+   ¥R
+0   $SYS/broker/client count/disconnected           DS
+   0               ¸S
+    $SYS/broker/subscriptions/count ,T
+   ¸S
+    ÏT
+   ÏT
+   1               TU
+    §Y
+        ,T
+$               ‘U
+    ¥
+        V
+-              V
+   tV
+    W
+   tV
+0   $SYS/broker/wildcard_subscriptions/count        W
+   0               ºW
+    §Y
+å[
+    ÏW
+(               ÏW
+   \X
+    ÏX
+   \X
+0   $SYS/broker/retained messages/count             ÏX
+   1               §Y
+    ú
+TU
+ºW
+‘Y
+0              ‘Y
+   DZ
+    ‘Z
+   DZ
+0   $SYS/broker/settings/max_queued_messages        ‘Z
+   1000            å[
+    ºW
+        º[
+0              º[
+   ,\
+    º\
+   ,\
+0   $SYS/broker/settings/max_inflight_messages      º\
+   10              t]
+    $SYS/broker/ffdc/count          §]
+   t]
+    d^
+   d^
+   1               Ã^
+    $J
+        §]
+              _
+    î
+i
+                   Ë_
+D`
+   Ñf
+,3
+Dl
+≤   îa
+p   (0000) 20221222 041819.937 CWNAN0013S Internal error; FFDC written to file FFDC.CWNAN.20221222.041819.937.dmp .cÃb
+   |$
+Ñf
+	
+í   tc
+   ú,
+§f
+Dg
+6   e
+¿   (0000) 20221222 041821.660 CWNAN0034I Duplicate connection attempt received for client identifier "C10C000000000003" from address aaaa::c30c:0:0:3:1884, ending oldest connection               ‘e
+Ä   (0000) 20221222 041821.660 CWNAN0000I Client connected to udp port 1884 from C10C000000000003 (aaaa::c30c:0:0:3:1884) 
+SProtocoÑf
+   Ãb
+D`
+îk
+ú   §f
+   tc
+‰	
+îg
+=   Dg
+@   (0000) 20221222 042145.670 CWNAN0046I Broker stopping     ¯d
+îg
+@   (0000) 20221222 042145.670 CWNAN0016I MQTT protocol stopping c
+‰g
+@   (0000) 20221222 042145.670 CWNAN0301I MQTT-S protocol stopping 
+Dh
+P   (0000) 20221222 042145.670 CWNAN0017I Closing client C10C000000000003   0   8d
+§h
+P   (0000) 20221222 042145.670 CWNAN0017I Closing client C10C000000000002 
+      îk
+†   (0000) 20221222 040930.953 CWNAN0018W Socket error for client identifier mosq/XbbkkQ8smOYjqGGtzv, socket 5, peer address 127.0.0.1:58987; ending connection     Dl
+¿   (0000) 20221222 041819.937 CWNAN0034I Duplicate connection attempt received for client identifier "C10C000000000002" from address aaaa::c30c:0:0:2:1884, ending oldest connection               
+=========== End of heap dump ==========
+

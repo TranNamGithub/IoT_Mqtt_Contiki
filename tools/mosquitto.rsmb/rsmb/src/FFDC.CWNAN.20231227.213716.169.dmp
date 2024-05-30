@@ -1,0 +1,19 @@
+-------- Start FFDC ------s
+FFDC.CWNAN.20231227.213716.169.dmp
+Product      :- Really Small Message Broker
+Version      :- 1.3.0.2
+Build        :- Mar 16 2018 08:33:43
+Features     :- bridge MQTTS 
+Pointer size :- 4 bytes
+Date/Time    :- Wed Dec 27 21:37:16 2023
+
+Reason       :- 20231227 213716.169 CWNAN0013S Failed to remove heap item at file MQTTSProtocol.c line 1042
+
+=========== Start of stack trace ==========
+MQTTSProtocol_emptyRegistrati (1038)
+   at MQTTSProtocol_handleConnects (317)
+   at MQTTSProtocol_timeslice (199)
+   at Protocol_timeslice (131)
+   at main (254)
+=========== End of stack trace ==========
+

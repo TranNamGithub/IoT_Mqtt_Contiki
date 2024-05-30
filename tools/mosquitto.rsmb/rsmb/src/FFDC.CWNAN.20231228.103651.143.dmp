@@ -1,0 +1,63 @@
+-------- Start FFDC ------s
+FFDC.CWNAN.20231228.103651.143.dmp
+Product      :- Really Small Message Broker
+Version      :- 1.3.0.2
+Build        :- Mar 16 2018 08:33:43
+Features     :- bridge MQTTS 
+Pointer size :- 4 bytes
+Date/Time    :- Thu Dec 28 10:36:51 2023
+
+Reason       :- SEGV information
+info.si_signo = 11
+info.si_errno = 0
+info.si_code  = 1 (SEGV_MAPERR)
+info.si_addr  = 0x6467
+
+
+=========== Start of stack trace ==========
+MQTTSProtocol_emptyRegistrati (1038)
+   at MQTTSProtocol_handleConnects (317)
+   at MQTTSProtocol_timeslice (199)
+   at Protocol_timeslice (131)
+   at main (254)
+=========== End of stack trace ==========
+
+=========== Start of trace dump ==========
+20231228 102615.901 CWNAN9999I Really Small Message Broker
+20231228 102615.901 CWNAN9998I Part of Project Mosquitto in Eclipse
+(http://projects.eclipse.org/projects/technology.mosquitto)
+20231228 102615.901 CWNAN0049I Configuration file name is config.mqtt
+20231228 102615.901 CWNAN0053I Version 1.3.0.2, Mar 16 2018 08:33:43
+20231228 102615.901 CWNAN0054I Features included: bridge MQTTS 
+20231228 102615.901 CWNAN9993I Authors: Ian Craggs (icraggs@uk.ibm.com), Nicholas O'Leary
+20231228 102615.902 CWNAN0014I MQTT protocol starting, listening on port 1883
+20231228 102615.902 CWNAN0300I MQTT-S protocol starting, listening on port 1884
+20231228 102616.277 CWNAN0033I Connection attempt to listener 1883 received from client paho/D6767F1FDD57625261 on address 127.0.0.1:53049
+20231228 102616.278 CWNAN0033I Connection attempt to listener 1883 received from client paho/DDDDF65FE52D144DA1 on address 127.0.0.1:37965
+20231228 102621.656 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98FF51234 (aaaa::212:4b00:5a9:8ff5:1884)
+20231228 102623.484 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98F91 (aaaa::212:4b00:5a9:8f91:1884)
+20231228 102624.469 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231228 102624.842 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98FB4 (aaaa::212:4b00:5a9:8fb4:1884)
+20231228 102630.930 CWNAN0033I Connection attempt to listener 1883 received from client 1234 on address 127.0.0.1:52104
+20231228 102630.931 CWNAN0038I Disconnection request received from client 1234
+20231228 102637.305 CWNAN0033I Connection attempt to listener 1883 received from client 1234 on address 127.0.0.1:52106
+20231228 102637.306 CWNAN0038I Disconnection request received from client 1234
+20231228 102646.464 CWNAN0033I Connection attempt to listener 1883 received from client 1234 on address 127.0.0.1:52108
+20231228 102646.466 CWNAN0038I Disconnection request received from client 1234
+20231228 102654.821 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005AF4BA7" from address aaaa::212:4b00:5af:4ba7:1884, ending oldest connection
+20231228 102654.821 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231228 102658.699 CWNAN0033I Connection attempt to listener 1883 received from client 1234 on address 127.0.0.1:52110
+20231228 102658.700 CWNAN0038I Disconnection request received from client 1234
+20231228 102725.177 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005AF4BA7" from address aaaa::212:4b00:5af:4ba7:1884, ending oldest connection
+20231228 102725.177 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231228 102743.965 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005AF4BA7" from address aaaa::212:4b00:5af:4ba7:1884, ending oldest connection
+20231228 102743.965 CWNAN0000I Client connected to udp port 1884 from 00124B0005AF4BA7 (aaaa::212:4b00:5af:4ba7:1884)
+20231228 102811.362 CWNAN0033I Connection attempt to listener 1883 received from client 1234 on address 127.0.0.1:52112
+20231228 102811.363 CWNAN0038I Disconnection request received from client 1234
+20231228 102814.742 CWNAN0033I Connection attempt to listener 1883 received from client 1234 on address 127.0.0.1:52114
+20231228 102814.743 CWNAN0038I Disconnection request received from client 1234
+20231228 102936.628 CWNAN0034I Duplicate connection attempt received for client identifier "00124B0005A98FF51234" from address aaaa::212:4b00:5a9:8ff5:1884, ending oldest connection
+20231228 102936.628 CWNAN0013S Internal error; FFDC written to file FFDC.CWNAN.20231228.102936.628.dmp
+20231228 102936.632 CWNAN0013S Internal error; FFDC written to file FFDC.CWNAN.20231228.102936.632.dmp
+20231228 102936.633 CWNAN0013S Internal error; FFDC written to file FFDC.CWNAN.20231228.102936.633.dmp
+20231228 102936.634 CWNAN0000I Client connected to udp port 1884 from 00124B0005A98FF512

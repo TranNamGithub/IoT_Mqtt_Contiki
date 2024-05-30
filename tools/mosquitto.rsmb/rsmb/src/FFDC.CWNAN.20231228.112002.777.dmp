@@ -1,0 +1,30 @@
+-------- Start FFDC ------s
+FFDC.CWNAN.20231228.112002.777.dmp
+Product      :- Really Small Message Broker
+Version      :- 1.3.0.2
+Build        :- Mar 16 2018 08:33:43
+Features     :- bridge MQTTS 
+Pointer size :- 4 bytes
+Date/Time    :- Thu Dec 28 11:20:02 2023
+
+Reason       :- SEGV information
+info.si_signo = 11
+info.si_errno = 0
+info.si_code  = 1 (SEGV_MAPERR)
+info.si_addr  = 0x7
+
+
+=========== Start of stack trace ==========
+SubscriptionEngines_unsubscri (427)
+   at SubscriptionEngines_unsubscri (455)
+   at SubscriptionEngines_unsubscri (486)
+   at MQTTProtocol_removeAllSubscri (609)
+   at MQTTProtocol_freeClient (918)
+   at MQTTProtocol_closeSession (1069)
+   at MQTTProtocol_shutdownclients (159)
+   at MQTTSProtocol_terminate (150)
+   at Protocol_terminate (70)
+   at Broker_shutdown (367)
+   at main (254)
+=========== End of stack trace ==========
+
